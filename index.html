@@ -1,23 +1,43 @@
 <!doctype html>
-<html ng-app="App">
+<html>
   <head>
     <meta charset="utf-8">
     <title>Class Enrollment</title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script src="app.js"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/getJSON.js"></script>
+    <script type="text/javascript" src="assets/js/jqueryApp.js"></script>
+    <script type="text/javascript" src="semantic/out/semantic.min.js"></script>
     <link rel="stylesheet" type="text/css" href="semantic/out/semantic.min.css">
-    <script src="semantic/out/semantic.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   </head>
-  <body ng-controller="CEnrollCtrl">
-    <h1>Courses</h1>
-    <ul>
-      <li ng-repeat="course in courses">
-        {{course.id}} : {{course.name.th}} - <em>{{course.name.en}}</em>
-      </li>
-    </ul>
+  <body>
+    <h1 class="ui center aligned icon header">
+      <i class="circular book icon"></i>
+      SKE Course Enrollment
+    </h1>
 
+    <button class="ui button" id="testB">
+      Button
+      <div class="ui page dimmer">
+        <div class="content">
+          <div class="center">
+            <i class="heart icon"></i>
+            Hello
+          </div>
+        </div>
+      </div>
+    </button>
+
+    <h1>Courses</h1>
+    <div class="ui search">
+      <div class="ui icon input">
+        <input class="prompt" type="text" placeholder="Search countries...">
+        <i class="search icon"></i>
+      </div>
+      <div id="result"></div>
+    </div>
+
+    <div class="ui styled fluid accordion" id="list"></div>
   </body>
 </html>
