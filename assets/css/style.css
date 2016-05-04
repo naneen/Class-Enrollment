@@ -1,16 +1,13 @@
-body {
-  background-color: #FFFFFF;
+ul {
+  padding-left: 0;
 }
-.ui.menu .item img.logo {
-  margin-right: 1.5em;
+
+#content {
+  padding-top: 68px;
 }
-.main.container {
-  margin-top: 7em;
-}
-.wireframe {
-  margin-top: 2em;
-}
-.ui.footer.segment {
-  margin: 5em 0em 0em;
-  padding: 5em 0em;
+
+#intro {
+  margin: 4% auto;
+  /*background-color: rgb(255, 140, 102);
+  color: rgba(0, 0, 0, 0.8)*/
 }

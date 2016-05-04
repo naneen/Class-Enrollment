@@ -4,10 +4,13 @@ $(document).ready(function() {
   });
 
   $('.ui.accordion').accordion('refresh');
+
+  // $('.ui.search').search('get result', 'cat');
+  
 });
 
-
-// $('.ui .item').on('click', function() {
-//   $('.ui .item').removeClass('active');
-//   $(this).addClass('active');
-// });
+function searching(courses) {
+  $('.ui.search').search({
+      source: courses
+  });
+}

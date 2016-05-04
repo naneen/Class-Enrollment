@@ -12,32 +12,63 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   </head>
   <body>
-    <h1 class="ui center aligned icon header">
-      <i class="circular book icon"></i>
-      SKE Course Enrollment
-    </h1>
 
-    <button class="ui button" id="testB">
-      Button
-      <div class="ui page dimmer">
-        <div class="content">
-          <div class="center">
-            <i class="heart icon"></i>
-            Hello
+    <div class="ui fixed inverted menu">
+      <div class="ui container">
+        <a href="#" class="header item">
+          <img class="logo" src="assets/images/logo.png">
+          Project Name
+        </a>
+        <a href="#" class="item">Home</a>
+        <div class="ui simple dropdown item">
+          Dropdown <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="#">Link Item</a>
+            <a class="item" href="#">Link Item</a>
+            <div class="divider"></div>
+            <div class="header">Header Item</div>
+            <div class="item">
+              <i class="dropdown icon"></i>
+              Sub Menu
+              <div class="menu">
+                <a class="item" href="#">Link Item</a>
+                <a class="item" href="#">Link Item</a>
+              </div>
+            </div>
+            <a class="item" href="#">Link Item</a>
           </div>
         </div>
       </div>
-    </button>
-
-    <h1>Courses</h1>
-    <div class="ui search">
-      <div class="ui icon input">
-        <input class="prompt" type="text" placeholder="Search countries...">
-        <i class="search icon"></i>
-      </div>
-      <div id="result"></div>
     </div>
 
-    <div class="ui styled fluid accordion" id="list"></div>
+    <div id="content" class="ui container">
+      <h1 class="ui center aligned icon header" id="intro">
+        <i class="circular book icon"></i>
+        SKE Course Enrollment
+      </h1>
+
+      <!-- <button class="ui button" id="testB">
+        Button
+        <div class="ui page dimmer">
+          <div class="content">
+            <div class="center">
+              <i class="heart icon"></i>
+              Hello
+            </div>
+          </div>
+        </div>
+      </button> -->
+
+      <h1>Courses</h1>
+      <div class="ui fluid search">
+        <div class="ui icon input">
+          <input class="prompt" type="text" placeholder="Search coursrs...">
+          <i class="search icon"></i>
+        </div>
+        <div id="result"></div>
+      </div>
+
+      <div class="ui styled fluid accordion" id="list"></div>
+    </div>
   </body>
 </html>
