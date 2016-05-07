@@ -1,40 +1,23 @@
-<!doctype html>
-<html ng-app="App">
-  <head>
-    <meta charset="utf-8">
-    <title>Class Enrollment</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script type="text/javascript" src="../assets/js/getJSON.js"></script>
-    <script type="text/javascript" src="../assets/js/jqueryApp.js"></script>
-    <script src="../bower_components/angular-toArrayFilter/toArrayFilter.js"></script>
-    <script type="text/javascript" src="../semantic/out/semantic.min.js"></script>
-    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../semantic/out/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-  </head>
-  <body ng-controller="HomeController as homeCtrl">
-    <div id="navbar" class="ui secondary pointing menu fixed">
-      <div class="ui container">
-        <a href="index.html" class="item">SKE Enroll</a>
-        <a href="index.html#enroll" class="item">Enroll</a>
-        <a href="#" class="item active">Courses</a>
-      </div>
+<div ng-controller="HomeController as homeCtrl">
+  <div id="navbar" class="ui secondary pointing menu fixed">
+    <div class="ui container">
+      <a href="index.html" class="item">SKE Enroll</a>
+      <a href="index.html#enroll" class="item">Enroll</a>
+      <a href="#" class="item active">Courses</a>
     </div>
-    <div id="content" class="ui container">
-      <div class="ui styled fluid accordion">
-        <div ng-repeat="course in homeCtrl.courses">
-          <div class="title">
-            <i class="dropdown icon"></i>
-            {{course.id}} : {{course.name.en}}
-          </div>
-          <div class="content">
-            <p>{{course.description.en}}</p>
-            <p><em>CREDIT - self : {{course.credit.self}} lab : {{course.credit.lab}} total : {{course.credit.total}} lecture : {{course.credit.lecture}}</em></p>
-          </div>
+  </div>
+  <div id="content" class="ui container">
+    <div class="ui styled fluid accordion">
+      <div ng-repeat="course in homeCtrl.courses">
+        <div class="title">
+          <i class="dropdown icon"></i>
+          {{course.id}} : {{course.name.en}}
+        </div>
+        <div class="content">
+          <!-- <p>{{course.description.en}}</p>
+          <p><em>CREDIT - self : {{course.credit.self}} lab : {{course.credit.lab}} total : {{course.credit.total}} lecture : {{course.credit.lecture}}</em></p> -->
         </div>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+</div>

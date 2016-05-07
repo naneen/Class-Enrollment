@@ -7,12 +7,13 @@
 //       $scope.courses = res.data;
 //     });
 // });
-var App = angular.module('App', ['angular-toArrayFilter', 'ui.router']);
+var App = angular.module('App', ['ui.router']);
 
 App.controller('HomeController', function ($http) {
     var regist = this;
 
-    $http.get('https://whsatku.github.io/skecourses/combined.json')
+    // $http.get('https://whsatku.github.io/skecourses/combined.json')
+    $http.get('https://whsatku.github.io/skecourses/list.json')
       .success(function(res){
         console.log(res);
         regist.courses = res;
@@ -41,6 +42,10 @@ App.config(function($stateProvider, $urlRouterProvider) {
     .state('enroll', {
       url: "/enroll",
       templateUrl: "enroll.html"
+    })
+    .state('list', {
+      url: "/list",
+      templateUrl: "list.html"
     })
     // .state('state2.list', {
     //   url: "/list",
