@@ -1,0 +1,76 @@
+<div ng-controller="HomeController as homeCtrl">
+
+  <div id="navbar" class="ui secondary pointing menu fixed">
+    <div class="ui container">
+      <a href="#" class="item active">SKE REGIST</a>
+      <a href="#enroll" class="item">Enroll</a>
+      <a href="list.html" class="item">Courses</a>
+    </div>
+  </div>
+
+  <div id="headContent">
+    <div id="content" class="ui container">
+      <h1 class="ui center aligned icon header" id="intro">
+        <i class="circular book icon"></i>
+        SKE Course Enrollment
+      </h1>
+    </div>
+  </div>
+
+  <div id="enroll">
+    <div id="content" class="ui container">
+      <div class="ui two column centered grid" id="stepGrid">
+        <div class="ui ordered steps">
+          <div class="active step">
+            <div class="content">
+              <div class="title">Select</div>
+              <div class="description">Select a course you want</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="content">
+              <div class="title">Enroll</div>
+              <div class="description">Fill information to enroll a course</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="content">
+              <div class="title">Confirm</div>
+              <div class="description">Verify enrollment details</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="content" class="ui container">
+      <label>Search courses: <input ng-model="search"></label>
+      <ul>
+        <div ng-repeat="course in homeCtrl.courses | toArray | filter:search:strict">
+          <a value="{{course.id}}">{{course.id}} : {{course.name.en}}</a>
+        </div>
+      </ul>
+
+
+      <select ng-model="selectedCar">
+        <option ng-repeat="x in homeCtrl.courses | toArray" value="{{x.id}}">{{x.id}}</option>
+      </select>
+
+      <h1>You selected: {{selectedCar}}</h1>
+    </div>
+  </div>
+
+  <div id="test" class="ui container">
+    <button>
+      <a ui-sref="enroll">enroll</a>
+    </button>
+    <div ui-view></div>
+  </div>
+
+  <script type="text/javascript">
+    $('#testB')
+    .dimmer('toggle')
+    ;
+  </script>
+
+</div>

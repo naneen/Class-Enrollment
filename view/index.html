@@ -1,81 +1,22 @@
 <!doctype html>
 <html ng-app="App">
-  <head>
-    <meta charset="utf-8">
-    <title>Class Enrollment</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script type="text/javascript" src="../assets/js/getJSON.js"></script>
-    <script type="text/javascript" src="../assets/js/jqueryApp.js"></script>
-    <script type="text/javascript" src="../semantic/out/semantic.min.js"></script>
-    <script src="../bower_components/angular-toArrayFilter/toArrayFilter.js"></script>
-    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../semantic/out/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-  </head>
-  <body ng-controller="HomeController as homeCtrl">
+<head>
+  <meta charset="utf-8">
+  <title>Class Enrollment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script type="text/javascript" src="../assets/js/getJSON.js"></script>
+  <script type="text/javascript" src="../assets/js/jqueryApp.js"></script>
+  <script type="text/javascript" src="../semantic/out/semantic.min.js"></script>
+  <script src="../bower_components/angular-toArrayFilter/toArrayFilter.js"></script>
+  <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../semantic/out/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+</head>
+<body ng-controller="HomeController as homeCtrl">
 
-    <div id="navbar" class="ui secondary pointing menu fixed">
-      <div class="ui container">
-        <a href="#" class="item active">SKE REGIST</a>
-        <a href="#enroll" class="item">Enroll</a>
-        <a href="list.html" class="item">Courses</a>
-      </div>
-    </div>
+  <div ui-view></div>
 
-    <div id="headContent">
-      <div id="content" class="ui container">
-        <h1 class="ui center aligned icon header" id="intro">
-          <i class="circular book icon"></i>
-            SKE Course Enrollment
-        </h1>
-      </div>
-    </div>
-
-    <div id="enroll">
-      <div id="content" class="ui container">
-          <div class="ui two column centered grid" id="stepGrid">
-            <div class="ui ordered steps">
-              <div class="active step">
-                <div class="content">
-                  <div class="title">Select</div>
-                  <div class="description">Select a course you want</div>
-                </div>
-              </div>
-              <div class="step">
-                <div class="content">
-                  <div class="title">Enroll</div>
-                  <div class="description">Fill information to enroll a course</div>
-                </div>
-              </div>
-              <div class="step">
-                <div class="content">
-                  <div class="title">Confirm</div>
-                  <div class="description">Verify enrollment details</div>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-
-      <div id="content" class="ui container">
-        <label>Search courses: <input ng-model="search"></label>
-        <ul>
-            <div ng-repeat="course in homeCtrl.courses | toArray | filter:search:strict">
-              <a value="{{course.id}}">{{course.id}} : {{course.name.en}}</a>
-            </div>
-        </ul>
-
-
-        <select ng-model="selectedCar">
-          <option ng-repeat="x in homeCtrl.courses | toArray" value="{{x.id}}">{{x.id}}</option>
-        </select>
-
-        <h1>You selected: {{selectedCar}}</h1>
-
-      </div>
-    </div>
-
-  </body>
+</body>
 </html>

@@ -1,32 +1,38 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Class Enrollment</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script type="text/javascript" src="../assets/js/getJSON.js"></script>
-    <script type="text/javascript" src="../assets/js/jqueryApp.js"></script>
-    <script type="text/javascript" src="../semantic/out/semantic.min.js"></script>
-    <script src="../bower_components/angular-toArrayFilter/toArrayFilter.js"></script>
-    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../semantic/out/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-  </head>
-  <body>
-    <div class="ui fixed inverted menu">
-      <div class="ui container">
-        <a href="index.html" class="header item">
-          <img class="logo" src="assets/images/logo.png">
-          SKE Enroll
-        </a>
-        <a href="#" class="item">Enroll</a>
+<div ng-controller="HomeController as homeCtrl">
+  <div id="navbar" class="ui secondary pointing menu fixed">
+    <div class="ui container">
+      <a href="#" class="item">SKE REGIST</a>
+      <a href="#enroll" class="item active">Enroll</a>
+      <a href="list.html" class="item">Courses</a>
+    </div>
+  </div>
+
+  <div id="enroll">
+    <div id="content" class="ui container">
+      <div class="ui two column centered grid" id="stepGrid">
+        <div class="ui ordered steps">
+          <div class="completed step">
+            <div class="content">
+              <div class="title">Select</div>
+              <div class="description">Select a course you want</div>
+            </div>
+          </div>
+          <div class="active step">
+            <div class="content">
+              <div class="title">Enroll</div>
+              <div class="description">Fill information to enroll a course</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="content">
+              <div class="title">Confirm</div>
+              <div class="description">Verify enrollment details</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <h1>enroll</h1>
 
+    <h1>HI</h1>
 
-
-  </body>
-</html>
+</div>

@@ -6,7 +6,7 @@ $(document).ready(function() {
   $('.ui.accordion').accordion('refresh');
 
   // $('.ui.search').search('get result', 'cat');
-  
+
 });
 
 function searching(courses) {
