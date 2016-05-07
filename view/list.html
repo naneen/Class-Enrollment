@@ -13,16 +13,17 @@
     <link rel="stylesheet" type="text/css" href="../semantic/out/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
   </head>
-  <body ng-controller="CEnrollCtrl">
+  <body ng-controller="HomeController as homeCtrl">
     <div id="navbar" class="ui secondary pointing menu fixed">
       <div class="ui container">
         <a href="index.html" class="item">SKE Enroll</a>
+        <a href="#enroll" class="item">Enroll</a>
         <a href="#" class="item active">Courses</a>
       </div>
     </div>
     <div id="content" class="ui container">
       <div class="ui styled fluid accordion">
-        <div ng-repeat="course in courses">
+        <div ng-repeat="course in homeCtrl.courses">
           <div class="title">
             <i class="dropdown icon"></i>
             {{course.id}} : {{course.name.en}}
