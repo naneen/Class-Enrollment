@@ -6,8 +6,26 @@ ul {
   padding-top: 68px;
 }
 
-#intro {
-  margin: 4% auto;
-  /*background-color: rgb(255, 140, 102);
-  color: rgba(0, 0, 0, 0.8)*/
+#intro, #headContent {
+  /*margin: 4% auto;*/
+  background-color: rgb(255, 140, 102);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.ui.grid>* {
+  padding: 0px;
+}
+
+#navbar {
+  background-color: rgb(255, 140, 102);
+  margin: 0;
+}
+
+.ui.secondary.pointing.menu .active.item {
+  color: white;
+  border-color: #edf6ff;
+}
+
+.ui.menu .item {
+  color: white;
 }

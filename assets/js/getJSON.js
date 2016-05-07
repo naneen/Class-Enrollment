@@ -1,12 +1,29 @@
-var App = angular.module('App', []);
+var App = angular.module('App', ['angular-toArrayFilter']);
 
 App.controller('CEnrollCtrl', function($scope, $http) {
-$http.get('https://whsatku.github.io/skecourses/combined.json')
-// $http.get('subjects/combined.json')
-     .then(function(res){
-        $scope.courses = res.data;
-      });
+  $http.get('https://whsatku.github.io/skecourses/combined.json')
+  // $http.get('subjects/combined.json')
+    .then(function(res){
+      console.log(res.data);
+      $scope.courses = res.data;
+    });
+  // var lists = $.parseJSON('[' + courses + ']');
+  // console.log(lists);
 });
+
+// App.controller('CEnrollCtrl', function($scope) {
+//     $scope.names = [
+//         'Jani',
+//         'Carl',
+//         'Margareth',
+//         'Hege',
+//         'Joe',
+//         'Gustav',
+//         'Birgit',
+//         'Mary',
+//         'Kai'
+//     ];
+// });
 
 
 // $(document).ready(function() {

@@ -1,0 +1,85 @@
+<!doctype html>
+<html ng-app="App">
+  <head>
+    <meta charset="utf-8">
+    <title>Class Enrollment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script type="text/javascript" src="../assets/js/getJSON.js"></script>
+    <script type="text/javascript" src="../assets/js/jqueryApp.js"></script>
+    <script type="text/javascript" src="../semantic/out/semantic.min.js"></script>
+    <script src="../bower_components/angular-toArrayFilter/toArrayFilter.js"></script>
+    <link rel="stylesheet" type="text/css" href="../semantic/out/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+  </head>
+  <body ng-controller="CEnrollCtrl">
+
+    <div id="navbar" class="ui secondary pointing menu fixed">
+      <div class="ui container">
+        <a href="#" class="item active">SKE Enroll</a>
+        <a href="list.html" class="item">Courses</a>
+      </div>
+    </div>
+
+    <div id="headContent">
+      <div id="content" class="ui container">
+        <h1 class="ui center aligned icon header" id="intro">
+          <i class="circular book icon"></i>
+            SKE Course Enrollment
+        </h1>
+      </div>
+    </div>
+
+    <div id="content" class="ui container">
+        <div class="ui two column centered grid" id="stepGrid">
+          <div class="ui ordered steps">
+            <div class="completed step">
+              <div class="content">
+                <div class="title">Select</div>
+                <div class="description">Select a course you want</div>
+              </div>
+            </div>
+            <div class="completed step">
+              <div class="content">
+                <div class="title">Enroll</div>
+                <div class="description">Fill information to enroll a course</div>
+              </div>
+            </div>
+            <div class="active step">
+              <div class="content">
+                <div class="title">Confirm</div>
+                <div class="description">Verify enrollment details</div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div id="content" class="ui container">
+
+      <label>Any: <input ng-model="search.$"></label> <br>
+      <table id="searchObjResults">
+        <tr ng-repeat="course in courses | toArray | filter:search:strict">
+          <td>{{course.id}} : {{course.name.en}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="content" class="ui container">
+      <div class="ui styled fluid accordion">
+        <div ng-repeat="course in courses ">
+          <div class="title">
+            <i class="dropdown icon"></i>
+            {{course.id}} : {{course.name.en}}
+          </div>
+          <div class="content">
+            <p>{{course.description.en}}</p>
+            <p><em>CREDIT - self : {{course.credit.self}} lab : {{course.credit.lab}} total : {{course.credit.total}} lecture : {{course.credit.lecture}}</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
