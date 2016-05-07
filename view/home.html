@@ -53,7 +53,7 @@
           <div class="ui olive segment" ng-repeat="course in homeCtrl.courses | filter:search">
             <div >
               <p>{{course.id}} : {{course.name.en}}</p>
-              <button class="ui olive button"><a ui-sref="enroll">enroll</a></button>
+              <a ui-sref="enroll"><button class="ui olive button" type="submit">enroll</button></a>
             </div>
           </div>
         </ul>

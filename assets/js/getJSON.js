@@ -1,12 +1,4 @@
-// var App = angular.module('App', ['angular-toArrayFilter']);
-//
-// App.controller('CEnrollCtrl', function($scope, $http) {
-//   $http.get('https://whsatku.github.io/skecourses/combined.json')
-//     .then(function(res){
-//       console.log(res.data);
-//       $scope.courses = res.data;
-//     });
-// });
+
 var App = angular.module('App', ['ui.router']);
 
 App.controller('HomeController', function ($http) {
@@ -47,10 +39,4 @@ App.config(function($stateProvider, $urlRouterProvider) {
       url: "/list",
       templateUrl: "list.html"
     })
-    // .state('state2.list', {
-    //   url: "/list",
-    //   templateUrl: "partials/state2.list.html",
-    //   controller: function($scope) {
-    //     $scope.items = ["A", "List", "Of", "Items"];
-    //   }
-    });
+});
