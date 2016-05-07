@@ -10,6 +10,7 @@
     <script type="text/javascript" src="../assets/js/jqueryApp.js"></script>
     <script type="text/javascript" src="../semantic/out/semantic.min.js"></script>
     <script src="../bower_components/angular-toArrayFilter/toArrayFilter.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../semantic/out/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
   </head>
@@ -59,13 +60,20 @@
       </div>
 
       <div id="content" class="ui container">
+        <label>Search courses: <input ng-model="search"></label>
+        <ul>
+            <div ng-repeat="course in homeCtrl.courses | toArray | filter:search:strict">
+              <a value="{{course.id}}">{{course.id}} : {{course.name.en}}</a>
+            </div>
+        </ul>
 
-        <label>Any: <input ng-model="search.$"></label> <br>
-        <table id="searchObjResults">
-          <tr ng-repeat="course in homeCtrl.courses | toArray | filter:search:strict">
-            <td>{{course.id}} : {{course.name.en}}</td>
-          </tr>
-        </table>
+
+        <select ng-model="selectedCar">
+          <option ng-repeat="x in homeCtrl.courses | toArray" value="{{x.id}}">{{x.id}}</option>
+        </select>
+
+        <h1>You selected: {{selectedCar}}</h1>
+
       </div>
     </div>
 
