@@ -100,4 +100,10 @@ App.config(function($stateProvider, $urlRouterProvider) {
     controller: "DashboardController",
     controllerAs: 'dashCtrl'
   })
+  .state('dashboardNav', {
+    url: "/myCourses",
+    templateUrl: "dashboardNav.html",
+    controller: "DashboardController",
+    controllerAs: 'dashCtrl'
+  })
 });
