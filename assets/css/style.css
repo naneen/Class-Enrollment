@@ -40,3 +40,7 @@ ul {
 .ui.secondary.pointing.menu .active.item:hover {
   color: #00B5AD;
 }
+
+/*.equal.height.row {
+    display: table-row;
+}*/

@@ -1,23 +1,32 @@
-<div ng-controller="HomeController as homeCtrl">
+<div id="listBody" ng-controller="ListController as listCtrl">
   <div id="navbar" class="ui secondary pointing menu fixed">
     <div class="ui container">
-      <a href="index.html" class="item">SKE Enroll</a>
+      <a href="index.html" class="item">SKE REGIST</a>
       <a href="index.html#enroll" class="item">Enroll</a>
       <a href="#" class="item active">Courses</a>
     </div>
   </div>
   <div id="content" class="ui container">
-    <div class="ui styled fluid accordion">
-      <div ng-repeat="course in homeCtrl.courses">
-        <div class="title">
-          <i class="dropdown icon"></i>
-          {{course.id}} : {{course.name.en}}
-        </div>
-        <div class="content">
-          <!-- <p>{{course.description.en}}</p>
-          <p><em>CREDIT - self : {{course.credit.self}} lab : {{course.credit.lab}} total : {{course.credit.total}} lecture : {{course.credit.lecture}}</em></p> -->
+    <div class="equal height row">
+      <div class="ui four column grid">
+        <div class="column" ng-repeat="course in listCtrl.detail">
+          <div class="ui card">
+            <div class="content">
+              <div class="header">{{course.name.en}}</div>
+              <div class="meta">{{course.id}}</div>
+              <div class="description">
+                <p>{{course.description.en}}</p>
+              </div>
+            </div>
+            <div class="extra content">
+              <p>credit<br>
+              <em>self : {{course.credit.self}} lab : {{course.credit.lab}} total : {{course.credit.total}} lecture : {{course.credit.lecture}}</em></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+
   </div>
 </div>

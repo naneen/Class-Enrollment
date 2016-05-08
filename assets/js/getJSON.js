@@ -7,11 +7,21 @@ App.controller('HomeController', function ($http) {
     // $http.get('https://whsatku.github.io/skecourses/combined.json')
     $http.get('https://whsatku.github.io/skecourses/list.json')
       .success(function(res){
-        console.log(res);
+        // console.log(res);
         regist.courses = res;
       });
   })
 
+App.controller('ListController', function ($http) {
+    var list = this;
+
+    // $http.get('https://whsatku.github.io/skecourses/combined.json')
+    $http.get('https://whsatku.github.io/skecourses/combined.json')
+      .success(function(res){
+        list.detail = res;
+        console.log(list.detail);
+      });
+  })
 
 App.config(function($stateProvider, $urlRouterProvider) {
   //
