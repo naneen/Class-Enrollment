@@ -1,8 +1,9 @@
 <div id="navbar" class="ui secondary pointing menu fixed">
   <div class="ui container">
     <a ui-sref="home" class="item">SKE REGIST</a>
-    <a href="#" class="item active">Enroll</a>
+    <a href="#" class="item">Enroll</a>
     <a ui-sref="list" class="item">Courses</a>
+    <a ui-sref="dashboard" class="item active">My Courses</a>
   </div>
 </div>
 
@@ -34,5 +35,10 @@
 </div>
 
 <div id="content" class="ui container">
-  {{dashCtrl.mycourses}}
+  <div class="ui olive clearing segment" ng-repeat="i in dashCtrl.mycourses">
+    <div>
+      <p>{{i.course.id}} - {{i.course.name.en}}</p>
+      <button class="ui button" type="submit" ng-click="nrollCtrl.dropCourse()">Enroll this course</button>
+    </div>
+  </div>
 </div>

@@ -1,8 +1,9 @@
   <div id="navbar" class="ui secondary pointing menu fixed">
     <div class="ui container">
       <a ui-sref="home" class="item">SKE REGIST</a>
-      <a href="#" class="item active">Enroll</a>
+      <a href="home" class="item active">Enroll</a>
       <a ui-sref="list" class="item">Courses</a>
+      <a ui-sref="dashboard" class="item">My Courses</a>
     </div>
   </div>
 
@@ -37,7 +38,6 @@
       {{nrollCtrl.course.name.en}}<br>
       {{nrollCtrl.course.description.en}}<br>
       <br>
-
 
       <a ui-sref="dashboard">
         <button class="ui button" type="submit" ng-click="nrollCtrl.addCourse()">Enroll this course</button>

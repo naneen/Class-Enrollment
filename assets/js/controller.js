@@ -32,32 +32,40 @@ App.controller('EnrollController', function ($http, $stateParams, MyCourseServic
   });
 
   enroll.addCourse = function() {
+    // console.log(enroll.c);
     MyCourseService.addCourse(enroll.c);
+  }
+
+  enroll.dropCourse = function() {
+    // console.log(enroll.c);
+    MyCourseService.dropCourse(enroll.c);
   }
 })
 
 App.controller('DashboardController', function ($http, MyCourseService) {
   var dashb = this;
   dashb.mycourses = MyCourseService.myCourses;
-  // dashb.mycourses = MyCourseService.getCourses();
-  console.log(dashb.mycourses);
+  // console.log(dashb.mycourses);
 })
 
 App.service('MyCourseService', function() {
   var myserv = this;
   myserv.myCourses = [];
 
-  myserv.addCourse = function(courseID) {
-    console.log("service");
+  myserv.addCourse = function(c) {
+    // console.log("service");
     myserv.myCourses.push({
-      id: courseID
+      course : c
     });
-    // console.log(myserv.myCourses);
+    console.log(myserv.myCourses);
   };
 
-  // myserv.getCourses = function() {
-  //   return myserv.myCourses;
-  // };
+  myserv.dropCourse = function(courseID) {
+    // console.log("dropCourse");
+    // myserv.myCourses.push({
+    //   id: courseID
+    // });
+  };
 });
 
 App.config(function($stateProvider, $urlRouterProvider) {
@@ -69,13 +77,6 @@ App.config(function($stateProvider, $urlRouterProvider) {
     controller: "HomeController",
     controllerAs: 'nrollCtrl'
   })
-  // .state('state1.list', {
-  //   url: "/list",
-  //   templateUrl: "partials/state1.list.html",
-  //   controller: function($scope) {
-  //     $scope.items = ["A", "List", "Of", "Items"];
-  //   }
-  // })
   .state('enroll', {
     url: '/enroll/:courseID',
     templateUrl: "enroll.html",
