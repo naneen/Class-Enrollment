@@ -1,44 +1,53 @@
-  <div id="navbar" class="ui secondary pointing menu fixed">
-    <div class="ui container">
-      <a ui-sref="home" class="item">SKE REGIST</a>
-      <a href="home" class="item active">Enroll</a>
-      <a ui-sref="list" class="item">Courses</a>
-      <a ui-sref="dashboard" class="item">My Courses</a>
-    </div>
+<div id="navbar" class="ui secondary pointing menu fixed">
+  <div class="ui container">
+    <a ui-sref="home" class="item">SKE REGIST</a>
+    <a href="home" class="item active">Enroll</a>
+    <a ui-sref="list" class="item">Courses</a>
+    <a ui-sref="dashboard" class="item">My Courses</a>
   </div>
+</div>
 
-  <div id="enrollStep">
-    <div id="content" class="ui container">
-      <div class="ui two column centered grid" id="stepGrid">
-        <div class="ui ordered steps">
-          <div class="completed step">
-            <div class="content">
-              <div class="title">Select</div>
-              <div class="description">Select a course you want</div>
-            </div>
+<div id="enrollStep">
+  <div id="content" class="ui container">
+    <div class="ui two column centered grid" id="stepGrid">
+      <div class="ui ordered steps">
+        <div class="completed step">
+          <div class="content">
+            <div class="title">Select</div>
+            <div class="description">Select a course you want</div>
           </div>
-          <div class="active step">
-            <div class="content">
-              <div class="title">Enroll</div>
-              <div class="description">Fill information to enroll a course</div>
-            </div>
+        </div>
+        <div class="active step">
+          <div class="content">
+            <div class="title">Enroll</div>
+            <div class="description">Fill information to enroll a course</div>
           </div>
-          <div class="step">
-            <div class="content">
-              <div class="title">Confirm</div>
-              <div class="description">Verify enrollment details</div>
-            </div>
+        </div>
+        <div class="step">
+          <div class="content">
+            <div class="title">Confirm</div>
+            <div class="description">Verify enrollment details</div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div id="content" class="ui container">
-      {{nrollCtrl.course.id}}<br>
-      {{nrollCtrl.course.name.en}}<br>
-      {{nrollCtrl.course.description.en}}<br>
-      <br>
-
-      <a ui-sref="dashboard">
-        <button class="ui button" type="submit" ng-click="nrollCtrl.addCourse()">Enroll this course</button>
-      </a>
+  <div id="content" class="ui container">
+    {{nrollCtrl.course.id}}<br>
+    {{nrollCtrl.course.name.en}}<br>
+    {{nrollCtrl.course.description.en}}<br>
+    <br>
+    <div class="ui centered grid">
+      <div class="column"></div>
+      <div class="large ui buttons">
+        <a ui-sref="dashboard">
+          <button class="ui button twin">Cancel</button>
+        </a>
+        <div class="or"></div>
+        <a ui-sref="dashboard">
+          <button class="ui positive button active twin" type="submit" ng-click="nrollCtrl.addCourse()">Enroll this course</button>
+        </a>
+      </div>
+    </div>
+  </div>

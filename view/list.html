@@ -2,7 +2,7 @@
   <div id="navbar" class="ui secondary pointing menu fixed">
     <div class="ui container">
       <a ui-sref="home" class="item">SKE REGIST</a>
-      <a ui-sref="home" class="item">Enroll</a>
+      <!-- <a ui-sref="home" class="item">Enroll</a> -->
       <a href="#" class="item active">Courses</a>
       <a ui-sref="dashboard" class="item">My Courses</a>
     </div>
@@ -11,7 +11,7 @@
     <div class="ui four stackable cards">
       <div class="card" ng-repeat="course in listCtrl.detail">
         <div class="content">
-          <div class="header">{{course.name.en}}</div>
+          <div id="listHeader" class="header">{{course.name.en}}</div>
           <div class="meta">{{course.id}}</div>
           <div class="description">
             <p>{{course.description.en}}</p>

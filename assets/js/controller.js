@@ -8,19 +8,15 @@ App.controller('HomeController', function ($http, MyCourseService) {
   $http.get('https://whsatku.github.io/skecourses/list.json')
   .success(function(res) {
     home.courses = res;
-    // console.log(res);
   });
 
   home.isEnrolled = function(courseID) {
-    console.log("isEnrolled");
-    console.log(myCourses);
     var myCoursesID = [];
     angular.forEach(myCourses, function(c, key) {
       myCoursesID.push(c.id);
     });
 
     if(myCoursesID.indexOf(courseID) !== -1) {
-      console.log("EXIST!! : " + courseID);
       return true;
     }
       return false;
@@ -57,19 +53,16 @@ App.controller('EnrollController', function ($http, $stateParams, MyCourseServic
 App.controller('DashboardController', function ($http, MyCourseService) {
   var dashb = this;
   dashb.mycourses = MyCourseService.myCourses;
-  console.log(dashb.mycourses);
 })
 
 App.service('MyCourseService', function() {
   var myserv = this;
   myserv.myCourses = [];
 
-  myserv.addCourse = function(c) {
-    // console.log("service");
+  myserv.addCourse = function(course) {
     myserv.myCourses.push(
-      c
+      course
     );
-    // console.log(myserv.myCourses);
   };
 
   myserv.dropCourse = function(courseID) {

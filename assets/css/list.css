@@ -2,6 +2,6 @@
   background-color: #E5E54B;
 }
 
-.ui.card>.content>.header, .ui.cards>.card>.content>.header {
+#listHeader {
   color: #7A390D
 }
