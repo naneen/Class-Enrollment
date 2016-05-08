@@ -1,4 +1,4 @@
-<div ng-controller="enrollController as enrollCtrl">
+<div ng-controller="enrollController as nrollCtrl">
   <div id="navbar" class="ui secondary pointing menu fixed">
     <div class="ui container">
       <a ui-sref="home" class="item">SKE REGIST</a>
@@ -33,7 +33,9 @@
       </div>
     </div>
 
-    <h1>HI</h1>
-    <h1>{{enrollCtrl.courseID}}</h1>
+    {{nrollCtrl.course.id}}<br>
+    {{nrollCtrl.course.name.en}}<br>
+    {{nrollCtrl.course.description.en}}<br>
+
 
 </div>
