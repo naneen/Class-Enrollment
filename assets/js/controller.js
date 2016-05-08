@@ -12,12 +12,17 @@ App.controller('HomeController', function ($http, MyCourseService) {
   });
 
   home.isEnrolled = function(courseID) {
-    // console.log("isEnrolled");
-    // console.log(myCourses);
-    // if(myCourses.indexOf(courseID) !== -1) {
-    //   console.log("EXIST!! : " + courseID);
-    //   return true;
-    // }
+    console.log("isEnrolled");
+    console.log(myCourses);
+    var myCoursesID = [];
+    angular.forEach(myCourses, function(c, key) {
+      myCoursesID.push(c.id);
+    });
+
+    if(myCoursesID.indexOf(courseID) !== -1) {
+      console.log("EXIST!! : " + courseID);
+      return true;
+    }
       return false;
   }
 })
