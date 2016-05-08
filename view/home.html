@@ -1,206 +1,196 @@
-<div ng-controller="HomeController as homeCtrl">
-
-  <div id="navbar" class="ui secondary pointing menu fixed">
-    <div class="ui container">
-      <a ui-sref="home" class="item active">SKE REGIST</a>
-      <a ui-sref="home" class="item">Enroll</a>
-      <a ui-sref="list" class="item">Courses</a>
-    </div>
+<div id="navbar" class="ui secondary pointing menu fixed">
+  <div class="ui container">
+    <a ui-sref="home" class="item active">SKE REGIST</a>
+    <a ui-sref="home" class="item">Enroll</a>
+    <a ui-sref="list" class="item">Courses</a>
   </div>
+</div>
 
-  <div id="headContent">
-    <div id="content" class="ui container">
-      <h1 class="ui center aligned icon header" id="intro">
-        <i class="circular book icon"></i>
-        SKE Course Enrollment
-      </h1>
-    </div>
+<div id="headContent">
+  <div id="content" class="ui container">
+    <h1 class="ui center aligned icon header" id="intro">
+      <i class="circular book icon"></i>
+      SKE Course Enrollment
+    </h1>
   </div>
+</div>
 
-  <div id="enrolll">
-    <div id="content" class="ui container">
-      <div class="ui two column centered grid" id="stepGrid">
-        <div class="ui ordered steps">
-          <div class="active step">
-            <div class="content">
-              <div class="title">Select</div>
-              <div class="description">Select a course you want</div>
-            </div>
+<div id="enrolll">
+  <div id="content" class="ui container">
+    <div class="ui two column centered grid" id="stepGrid">
+      <div class="ui ordered steps">
+        <div class="active step">
+          <div class="content">
+            <div class="title">Select</div>
+            <div class="description">Select a course you want</div>
           </div>
-          <div class="step">
-            <div class="content">
-              <div class="title">Enroll</div>
-              <div class="description">Fill information to enroll a course</div>
-            </div>
+        </div>
+        <div class="step">
+          <div class="content">
+            <div class="title">Enroll</div>
+            <div class="description">Fill information to enroll a course</div>
           </div>
-          <div class="step">
-            <div class="content">
-              <div class="title">Confirm</div>
-              <div class="description">Verify enrollment details</div>
-            </div>
+        </div>
+        <div class="step">
+          <div class="content">
+            <div class="title">Confirm</div>
+            <div class="description">Verify enrollment details</div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div id="content" class="ui container">
-      <div class="ui search">
-        <div class="ui icon input">
-          <input class="prompt" type="text" placeholder="Search course" ng-model="search">
-          <i class="search icon"></i>
-        </div>
-        <ul>
-          <div class="ui olive clearing segment" ng-repeat="course in homeCtrl.courses | filter:search">
-            <div >
-              <p>{{course.id}} : {{course.name.en}}</p>
-              <a ui-sref="enroll({courseID: course.id})"><button class="ui olive right floated button" type="submit">enroll</button></a>
-            </div>
-          </div>
-        </ul>
-        <div>
-
-
-
-
-        <div id="regUtgaende" class="ui stacked segment">
-            <a class="ui ribbon orange label">Registrer utgående</a>
-            <div class="ui form">
-
-              <div class="two fields">
-                <div class="field">
-                  <label>Mengde</label>
-
-                  <div class="ui right labeled input">
-                    <input type="text" placeholder="Skriv mengde">
-                    <div class="ui basic label">
-                      Tonn
-                    </div>
-                  </div>
-                </div>
-                <div class="field">
-
-                  <label>Type</label>
-
-                  <div class="ui fluid search selection dropdown">
-                    <input type="hidden" name="country">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Velg type</div>
-                    <div class="menu">
-                      <div class="item" data-value="af">
-                      </i>Afghanistan</div>
-                      <div class="item" data-value="ax">
-                      </i>Aland Islands</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="field">
-
-                <div class="ui checkbox">
-                  <input type="checkbox" tabindex="0" class="hidden" checked>
-                  <label>Bruk nåværende dato og klokkeslett</label>
-                </div>
-              </div>
-              <div class="ui secondary segment datepicker dont-show small form">
-                <div class="field">
-                  <label>Dato</label>
-
-                  <div class="fields">
-                    <div class="three wide field">
-                      <select class="ui fluid dropdown" name="ut_dato[dato]">
-                        <option value="01">1</option>
-                        <option value="02">2</option>
-                        <option value="03">3</option>
-                        <option value="04">4</option>
-                        <option value="05">5</option>
-                        <option value="06">6</option>
-                        <option value="07">7</option>
-                        <option value="08">8</option>
-                        <option value="09">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
-                      </select>
-                    </div>
-                    <div class="six wide field">
-
-                      <select class="ui fluid search dropdown" name="ut_dato[maaned]">
-                        <option value="">Måned</option>
-                        <option value="1">Januar</option>
-                        <option value="2">Februar</option>
-                        <option value="3">Mars</option>
-                        <option value="4">April</option>
-                        <option value="5">Mai</option>
-                        <option value="6">Juni</option>
-                        <option value="7">Juli</option>
-                        <option value="8">August</option>
-                        <option value="9">September</option>
-                        <option value="10">Oktober</option>
-                        <option value="11">November</option>
-                        <option value="12">Desember</option>
-                      </select>
-                    </div>
-                    <div class="four wide field">
-                      <div class="ui input">
-                        <input type="text" value="2016" placeholder="År">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="fields">
-                  <div class="six wide field">
-                    <label>Tidspunkt</label>
-
-                    <div class="two fields">
-                      <div class="field">
-
-
-                        <div class="ui input">
-                          <input type="text" value="12">
-                        </div>
-                      </div>
-                      <div class="field">
-                        <div class="ui input">
-                          <input type="text" value="00">
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="ui button" tabindex="0">OK</div>
-            </div>
-
-
-            <select ng-model="selectedCar">
-              <option ng-repeat="x in homeCtrl.courses" value="{{x.id}}">{{x.id}}</option>
-            </select>
-
-            <h1>You selected: {{selectedCar}}</h1>
-          </div>
-        </div>
-
-
+  <div id="content" class="ui container">
+    <div class="ui search">
+      <div class="ui icon input">
+        <input class="prompt" type="text" placeholder="Search course" ng-model="search">
+        <i class="search icon"></i>
       </div>
+        <div class="ui olive clearing segment" ng-repeat="course in homeCtrl.courses | filter:search">
+          <div >
+            <p>{{course.id}} : {{course.name.en}}</p>
+            <a ui-sref="enroll({courseID: course.id})"><button class="ui olive right floated button" type="submit">enroll</button></a>
+          </div>
+        </div>
+      <div>
+        <!-- <div id="regUtgaende" class="ui stacked segment"> -->
+        <a class="ui ribbon orange label">Registrer utgående</a>
+        <div class="ui form">
+
+          <div class="two fields">
+            <div class="field">
+              <label>Mengde</label>
+
+              <div class="ui right labeled input">
+                <input type="text" placeholder="Skriv mengde">
+                <div class="ui basic label">
+                  Tonn
+                </div>
+              </div>
+            </div>
+            <div class="field">
+
+              <label>Type</label>
+
+              <div class="ui fluid search selection dropdown">
+                <input type="hidden" name="country">
+                <i class="dropdown icon"></i>
+                <div class="default text">Velg type</div>
+                <div class="menu">
+                  <div class="item" data-value="af">
+                  </i>Afghanistan</div>
+                  <div class="item" data-value="ax">
+                  </i>Aland Islands</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden" checked>
+              <label>Bruk nåværende dato og klokkeslett</label>
+            </div>
+          </div>
+          <div class="ui secondary segment datepicker dont-show small form">
+            <div class="field">
+              <label>Dato</label>
+
+              <div class="fields">
+                <div class="three wide field">
+                  <select class="ui fluid dropdown" name="ut_dato[dato]">
+                    <option value="01">1</option>
+                    <option value="02">2</option>
+                    <option value="03">3</option>
+                    <option value="04">4</option>
+                    <option value="05">5</option>
+                    <option value="06">6</option>
+                    <option value="07">7</option>
+                    <option value="08">8</option>
+                    <option value="09">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                  </select>
+                </div>
+                <div class="six wide field">
+
+                  <select class="ui fluid search dropdown" name="ut_dato[maaned]">
+                    <option value="">Måned</option>
+                    <option value="1">Januar</option>
+                    <option value="2">Februar</option>
+                    <option value="3">Mars</option>
+                    <option value="4">April</option>
+                    <option value="5">Mai</option>
+                    <option value="6">Juni</option>
+                    <option value="7">Juli</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">Oktober</option>
+                    <option value="11">November</option>
+                    <option value="12">Desember</option>
+                  </select>
+                </div>
+                <div class="four wide field">
+                  <div class="ui input">
+                    <input type="text" value="2016" placeholder="År">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="fields">
+              <div class="six wide field">
+                <label>Tidspunkt</label>
+
+                <div class="two fields">
+                  <div class="field">
+
+
+                    <div class="ui input">
+                      <input type="text" value="12">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui input">
+                      <input type="text" value="00">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui button" tabindex="0">OK</div>
+        </div>
+
+        <select ng-model="selectedCar">
+          <option ng-repeat="x in homeCtrl.courses" value="{{x.id}}">{{x.id}}</option>
+        </select>
+
+        <h1>You selected: {{selectedCar}}</h1>
+      </div>
+    </div>
+  </div>
+</div>

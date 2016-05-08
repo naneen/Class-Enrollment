@@ -38,5 +38,7 @@
       {{nrollCtrl.course.description.en}}<br>
       <br>
 
-      <button class="ui toggle button">Enroll this course</button>
-    </div>
+
+      <a ui-sref="dashboard">
+        <button class="ui button" type="submit" ng-click="nrollCtrl.addCourse()">Enroll this course</button>
+      </a>
