@@ -2,8 +2,8 @@
 
   <div id="navbar" class="ui secondary pointing menu fixed">
     <div class="ui container">
-      <a href="home" class="item active">SKE REGIST</a>
-      <a ui-sref="enroll" class="item">Enroll</a>
+      <a ui-sref="home" class="item active">SKE REGIST</a>
+      <a ui-sref="home" class="item">Enroll</a>
       <a ui-sref="list" class="item">Courses</a>
     </div>
   </div>
@@ -53,14 +53,16 @@
           <div class="ui olive clearing segment" ng-repeat="course in homeCtrl.courses | filter:search">
             <div >
               <p>{{course.id}} : {{course.name.en}}</p>
-              <a ui-sref="enroll"><button class="ui olive right floated button" type="submit">enroll</button></a>
+              <a ui-sref="enroll({courseID: course.id})"><button class="ui olive right floated button" type="submit">enroll</button></a>
             </div>
           </div>
         </ul>
         <div>
 
 
-          <div id="regUtgaende" class="ui stacked segment">
+
+
+        <div id="regUtgaende" class="ui stacked segment">
             <a class="ui ribbon orange label">Registrer utgående</a>
             <div class="ui form">
 

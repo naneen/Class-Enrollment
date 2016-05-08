@@ -2,29 +2,39 @@
 var App = angular.module('App', ['ui.router']);
 
 App.controller('HomeController', function ($http) {
-    var regist = this;
+  var regist = this;
 
-    // $http.get('https://whsatku.github.io/skecourses/combined.json')
-    $http.get('https://whsatku.github.io/skecourses/list.json')
-      .success(function(res){
-        // console.log(res);
-        regist.courses = res;
-      });
-  })
+  // $http.get('https://whsatku.github.io/skecourses/combined.json')
+  $http.get('https://whsatku.github.io/skecourses/list.json')
+    .success(function(res){
+      // console.log(res);
+      regist.courses = res;
+    });
+})
 
 App.controller('ListController', function ($http) {
-    var list = this;
+  var list = this;
 
-    // $http.get('https://whsatku.github.io/skecourses/combined.json')
-    $http.get('https://whsatku.github.io/skecourses/combined.json')
-      .success(function(res){
-        list.detail = res;
-        console.log(list.detail);
-      });
-  })
+  // $http.get('https://whsatku.github.io/skecourses/combined.json')
+  $http.get('https://whsatku.github.io/skecourses/combined.json')
+    .success(function(res){
+      list.detail = res;
+      console.log(list.detail);
+    });
+})
+
+App.controller('enrollController', function ($http, $stateParams) {
+  var enroll = this;
+  enroll.courseID = $stateParams.courseID;
+  console.log(enroll.courseID);
+  // $http.get('https://whsatku.github.io/skecourses/combined.json')
+  //   .success(function(res){
+  //     enroll.detail = res;
+  //     console.log(enroll.detail);
+  //   });
+})
 
 App.config(function($stateProvider, $urlRouterProvider) {
-  //
   // For any unmatched url, redirect to /state1
   $urlRouterProvider.otherwise("/home");
   //
@@ -42,8 +52,9 @@ App.config(function($stateProvider, $urlRouterProvider) {
     //   }
     // })
     .state('enroll', {
-      url: "/enroll",
-      templateUrl: "enroll.html"
+      url: '/enroll/:courseID',
+      templateUrl: "enroll.html",
+      controller: "enrollController"
     })
     .state('list', {
       url: "/list",
