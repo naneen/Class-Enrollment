@@ -44,15 +44,19 @@ App.controller('EnrollController', function ($http, $stateParams, MyCourseServic
   enroll.addCourse = function() {
     MyCourseService.addCourse(enroll.course);
   }
-
-  enroll.dropCourse = function() {
-    // MyCourseService.dropCourse(enroll.course);
-  }
 })
 
 App.controller('DashboardController', function ($http, MyCourseService) {
   var dashb = this;
   dashb.mycourses = MyCourseService.myCourses;
+
+  dashb.dropAllCourse = function() {
+    MyCourseService.dropAllCourse();
+  }
+
+  dashb.dropCourse = function() {
+    MyCourseService.dropCourse();
+  }
 })
 
 App.service('MyCourseService', function() {
@@ -65,11 +69,21 @@ App.service('MyCourseService', function() {
     );
   };
 
+  myserv.dropAllCourse = function() {
+    myserv.myCourses.length = 0;
+  }
+
   myserv.dropCourse = function(courseID) {
-    // console.log("dropCourse");
-    // myserv.myCourses.push({
-    //   id: courseID
-    // });
+    console.log("drop");
+    console.log(courseID);
+    var myCoursesID = [];
+    angular.forEach(myserv.myCourses, function(c, key) {
+      myCoursesID.push(c.id);
+    });
+
+    var index = myCoursesID.indexOf(courseID);
+    myserv.myCourses.splice(index, 1);
+    console.log(myserv.myCourses.length);
   };
 });
 

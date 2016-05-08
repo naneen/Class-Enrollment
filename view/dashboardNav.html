@@ -14,7 +14,12 @@
       Enroll Report
     </div>
   </h2>
+  <br>
+  <br>
 
+  <button class="fluid ui button" ng-click="dashCtrl.dropAllCourse()">Fits container</button>
+  <br>
+  <br>
   <div class="ui four stackable cards">
     <div class="card" ng-repeat="course in dashCtrl.mycourses">
       <div class="content">
@@ -24,7 +29,7 @@
           {{course.name.en}}
         </div>
       </div>
-      <div class="ui bottom attached button" ng-click="nrollCtrl.dropCourse()">
+      <div class="ui bottom attached button" ng-click="dashCtrl.dropCourse()">
         <i class="trash outline icon"></i>
         Drop
       </div>
