@@ -7,26 +7,20 @@
     </div>
   </div>
   <div id="content" class="ui container">
-    <div class="equal height row">
-      <div class="ui four column grid">
-        <div class="column" ng-repeat="course in listCtrl.detail">
-          <div class="ui card">
-            <div class="content">
-              <div class="header">{{course.name.en}}</div>
-              <div class="meta">{{course.id}}</div>
-              <div class="description">
-                <p>{{course.description.en}}</p>
-              </div>
-            </div>
-            <div class="extra content">
-              <p>credit<br>
-              <em>self : {{course.credit.self}} lab : {{course.credit.lab}} total : {{course.credit.total}} lecture : {{course.credit.lecture}}</em></p>
-            </div>
+    <div class="ui four cards">
+      <div class="card" ng-repeat="course in listCtrl.detail">
+        <div class="content">
+          <div class="header">{{course.name.en}}</div>
+          <div class="meta">{{course.id}}</div>
+          <div class="description">
+            <p>{{course.description.en}}</p>
           </div>
+        </div>
+        <div class="extra content">
+          <p>credit<br>
+          <em>self : {{course.credit.self}} lab : {{course.credit.lab}} total : {{course.credit.total}} lecture : {{course.credit.lecture}}</em></p>
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
