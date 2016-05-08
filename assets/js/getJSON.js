@@ -20,7 +20,7 @@ App.controller('ListController', function ($http) {
   });
 })
 
-App.controller('enrollController', function ($http, $stateParams) {
+App.controller('EnrollController', function ($http, $stateParams) {
   var enroll = this;
   var courseID = $stateParams.courseID;
 
@@ -30,13 +30,24 @@ App.controller('enrollController', function ($http, $stateParams) {
   });
 })
 
+App.controller('DashboardController', function ($http, $stateParams) {
+  // var enroll = this;
+  // var courseID = $stateParams.courseID;
+  //
+  // $http.get('https://whsatku.github.io/skecourses/' + courseID + '.json')
+  // .success(function(res){
+  //   enroll.course = res;
+  // });
+})
 
 App.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/home");
   $stateProvider
   .state('home', {
     url: "/home",
-    templateUrl: "home.html"
+    templateUrl: "home.html",
+    controller: "HomeController",
+    controllerAs: 'nrollCtrl'
   })
   // .state('state1.list', {
   //   url: "/list",
@@ -48,10 +59,19 @@ App.config(function($stateProvider, $urlRouterProvider) {
   .state('enroll', {
     url: '/enroll/:courseID',
     templateUrl: "enroll.html",
-    controller: "enrollController"
+    controller: "EnrollController",
+    controllerAs: 'nrollCtrl'
   })
   .state('list', {
     url: "/list",
-    templateUrl: "list.html"
+    templateUrl: "list.html",
+    controller: "ListController",
+    controllerAs: 'listCtrl'
+  })
+  .state('dashboard', {
+    url: "/dashboard",
+    templateUrl: "dashboard.html",
+    controller: "DashboardController",
+    controllerAs: 'dashCtrl'
   })
 });

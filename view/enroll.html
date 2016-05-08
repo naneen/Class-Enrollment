@@ -1,4 +1,3 @@
-<div ng-controller="enrollController as nrollCtrl">
   <div id="navbar" class="ui secondary pointing menu fixed">
     <div class="ui container">
       <a ui-sref="home" class="item">SKE REGIST</a>
@@ -7,7 +6,7 @@
     </div>
   </div>
 
-  <div id="enroll">
+  <div id="enrollStep">
     <div id="content" class="ui container">
       <div class="ui two column centered grid" id="stepGrid">
         <div class="ui ordered steps">
@@ -33,9 +32,11 @@
       </div>
     </div>
 
-    {{nrollCtrl.course.id}}<br>
-    {{nrollCtrl.course.name.en}}<br>
-    {{nrollCtrl.course.description.en}}<br>
+    <div id="content" class="ui container">
+      {{nrollCtrl.course.id}}<br>
+      {{nrollCtrl.course.name.en}}<br>
+      {{nrollCtrl.course.description.en}}<br>
+      <br>
 
-
-</div>
+      <button class="ui toggle button">Enroll this course</button>
+    </div>
