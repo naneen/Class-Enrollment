@@ -1,6 +1,75 @@
 
 var App = angular.module('App', ['ui.router']);
 
+App.config(function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise("/login");
+  $stateProvider
+  .state('home', {
+    url: "/home",
+    templateUrl: "home.html",
+    controller: "HomeController",
+    controllerAs: 'nrollCtrl'
+  })
+  .state('enroll', {
+    url: '/enroll/:courseID',
+    templateUrl: "enroll.html",
+    controller: "EnrollController",
+    controllerAs: 'nrollCtrl'
+  })
+  .state('list', {
+    url: "/list",
+    templateUrl: "list.html",
+    controller: "ListController",
+    controllerAs: 'listCtrl'
+  })
+  .state('dashboard', {
+    url: "/dashboard",
+    templateUrl: "dashboard.html",
+    controller: "DashboardController",
+    controllerAs: 'dashCtrl'
+  })
+  .state('dashboardNav', {
+    url: "/myCourses",
+    templateUrl: "dashboardNav.html",
+    controller: "DashboardController",
+    controllerAs: 'dashCtrl'
+  })
+  .state('login', {
+    url: "/login",
+    templateUrl: "login.html",
+    controller: "LoginController",
+    controllerAs: 'loginCtrl'
+  })
+});
+
+App.service('MyCourseService', function() {
+  var myserv = this;
+  myserv.myCourses = [];
+
+  myserv.addCourse = function(course) {
+    myserv.myCourses.push(
+      course
+    );
+  };
+
+  myserv.dropAllCourse = function() {
+    myserv.myCourses.length = 0;
+  }
+
+  myserv.dropCourse = function(courseID) {
+    console.log("drop");
+    console.log(courseID);
+    var myCoursesID = [];
+    angular.forEach(myserv.myCourses, function(c, key) {
+      myCoursesID.push(c.id);
+    });
+
+    var index = myCoursesID.indexOf(courseID);
+    myserv.myCourses.splice(index, 1);
+    console.log(myserv.myCourses.length);
+  };
+});
+
 App.controller('HomeController', function ($http, MyCourseService) {
   var home = this;
   var myCourses = MyCourseService.myCourses;
@@ -58,66 +127,3 @@ App.controller('DashboardController', function ($http, MyCourseService) {
     MyCourseService.dropCourse();
   }
 })
-
-App.service('MyCourseService', function() {
-  var myserv = this;
-  myserv.myCourses = [];
-
-  myserv.addCourse = function(course) {
-    myserv.myCourses.push(
-      course
-    );
-  };
-
-  myserv.dropAllCourse = function() {
-    myserv.myCourses.length = 0;
-  }
-
-  myserv.dropCourse = function(courseID) {
-    console.log("drop");
-    console.log(courseID);
-    var myCoursesID = [];
-    angular.forEach(myserv.myCourses, function(c, key) {
-      myCoursesID.push(c.id);
-    });
-
-    var index = myCoursesID.indexOf(courseID);
-    myserv.myCourses.splice(index, 1);
-    console.log(myserv.myCourses.length);
-  };
-});
-
-App.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise("/home");
-  $stateProvider
-  .state('home', {
-    url: "/home",
-    templateUrl: "home.html",
-    controller: "HomeController",
-    controllerAs: 'nrollCtrl'
-  })
-  .state('enroll', {
-    url: '/enroll/:courseID',
-    templateUrl: "enroll.html",
-    controller: "EnrollController",
-    controllerAs: 'nrollCtrl'
-  })
-  .state('list', {
-    url: "/list",
-    templateUrl: "list.html",
-    controller: "ListController",
-    controllerAs: 'listCtrl'
-  })
-  .state('dashboard', {
-    url: "/dashboard",
-    templateUrl: "dashboard.html",
-    controller: "DashboardController",
-    controllerAs: 'dashCtrl'
-  })
-  .state('dashboardNav', {
-    url: "/myCourses",
-    templateUrl: "dashboardNav.html",
-    controller: "DashboardController",
-    controllerAs: 'dashCtrl'
-  })
-});
