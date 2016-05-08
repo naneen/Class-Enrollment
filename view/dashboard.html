@@ -37,7 +37,7 @@
 <div id="content" class="ui container">
   <div class="ui olive clearing segment" ng-repeat="i in dashCtrl.mycourses">
     <div>
-      <p>{{i.course.id}} - {{i.course.name.en}}</p>
+      <p>{{i.id}} - {{i.name.en}}</p>
       <button class="ui button" type="submit" ng-click="nrollCtrl.dropCourse()">Enroll this course</button>
     </div>
   </div>
