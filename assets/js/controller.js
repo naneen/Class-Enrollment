@@ -8,7 +8,7 @@ App.config(function($stateProvider, $urlRouterProvider) {
     url: "/home",
     templateUrl: "home.html",
     controller: "HomeController",
-    controllerAs: 'nrollCtrl'
+    controllerAs: 'homeCtrl'
   })
   .state('enroll', {
     url: '/enroll/:courseID',
@@ -46,6 +46,8 @@ App.service('MyCourseService', function($http) {
   var myserv = this;
   myserv.myNewCourses = [];
   myserv.myCourses = [];
+  myserv.studentID = "";
+  myserv.password = "";
 
   $http.get('http://52.37.98.127:3000/v1/5610545048?pin=5048')
     .success(function(res) {
@@ -194,7 +196,15 @@ App.controller('DashboardController', function ($http, MyCourseService) {
   }
 })
 
-App.controller('LoginController', function ($http) {
-  var dashb = this;
+App.controller('LoginController', function ($http, MyCourseService) {
+  var login = this;
+  login.studentID = "";
+  login.password = "";
 
+  login.setAccount = function() {
+    MyCourseService.studentID = login.studentID;
+    MyCourseService.password = login.password;
+    console.log(login.studentID);
+    console.log(login.password);
+  }
 })
