@@ -47,6 +47,12 @@ App.service('MyCourseService', function($http) {
   myserv.myNewCourses = [];
   myserv.myCourses = [];
 
+  $http.get('http://52.37.98.127:3000/v1/5610545048?pin=5048')
+    .success(function(res) {
+      myserv.myCourses = res['561054048'];
+      // console.log(home.nrolledCourses);
+    });
+
   myserv.addCourse = function(course) {
     myserv.myNewCourses.push(
       course
@@ -54,12 +60,12 @@ App.service('MyCourseService', function($http) {
     myserv.myCourses.push(
       course
     );
+    // console.log(myserv.myCourses);
     myserv.postCourses();
   };
 
   myserv.clearNewEntry = function() {
     myserv.myNewCourses.length = 0;
-    console.log(myserv.myNewCourses);
   }
 
   myserv.dropAllCourse = function() {
@@ -91,29 +97,37 @@ App.service('MyCourseService', function($http) {
       alert(data.body);
     });
   }
+
+  // course = [];
+	// temp = { '5610546745' : this.course } ;
+  //
+  //
+	// ht.post(url, angular.toJson(temp), )
+  //
+  //
+	// course = data['5610546745'];
 });
 
 App.controller('HomeController', function ($http, MyCourseService) {
   var home = this;
-  var myCourses = MyCourseService.myCourses;
+  // home.myCourses = MyCourseService.myCourses;
   var myNewCourses = MyCourseService.myNewCourses;
-
-  $http.get('http://52.37.98.127:3000/v1/5610545048?pin=5048')
-    .success(function(res) {
-      home.nrolledCourses = res;
-      // console.log(home.nrolledCourses);
-    });
 
   $http.get('https://whsatku.github.io/skecourses/list.json')
     .success(function(res) {
       home.courses = res;
     });
 
+    // console.log(home.myCourses);
+
   home.isEnrolled = function(courseID) {
+    home.myCourses = MyCourseService.myCourses;
     var myCoursesID = [];
-    angular.forEach(myCourses, function(c, key) {
-      myCoursesID.push(c.id);
-    });
+    // console.log(home.myCourses);
+    for(var i = 0; i < home.myCourses.length; i++) {
+      // console.log(home.myCourses[i].id);
+      myCoursesID.push(home.myCourses[i].id);
+    };
     angular.forEach(myNewCourses, function(c, key) {
       myCoursesID.push(c.id);
     });
@@ -178,4 +192,9 @@ App.controller('DashboardController', function ($http, MyCourseService) {
   dashb.dropCourse = function(id) {
     MyCourseService.dropCourse(id);
   }
+})
+
+App.controller('LoginController', function ($http) {
+  var dashb = this;
+
 })
