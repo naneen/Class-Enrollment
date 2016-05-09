@@ -42,7 +42,7 @@ App.config(function($stateProvider, $urlRouterProvider) {
   })
 });
 
-App.service('MyCourseService', function() {
+App.service('MyCourseService', function($http) {
   var myserv = this;
   myserv.myNewCourses = [];
   myserv.myCourses = [];
@@ -51,7 +51,7 @@ App.service('MyCourseService', function() {
     myserv.myNewCourses.push(
       course
     );
-    console.log(myserv.myNewCourses);
+    // console.log(myserv.myNewCourses);
   };
 
   myserv.removeAllCourse = function() {
@@ -59,8 +59,6 @@ App.service('MyCourseService', function() {
   }
 
   myserv.removeCourse = function(courseID) {
-    console.log("drop");
-    console.log(courseID);
     var myCoursesID = [];
     angular.forEach(myserv.myNewCourses, function(c, key) {
       myCoursesID.push(c.id);
@@ -68,7 +66,7 @@ App.service('MyCourseService', function() {
 
     var index = myCoursesID.indexOf(courseID);
     myserv.myNewCourses.splice(index, 1);
-    console.log(myserv.myNewCourses.length);
+    console.log(index);
   };
 
   myserv.confirmEnroll = function() {
@@ -76,6 +74,7 @@ App.service('MyCourseService', function() {
       myserv.myCourses.push(c);
     });
     myserv.removeAllCourse();
+    myserv.postCourses();
   }
 
   myserv.dropAllCourse = function() {
@@ -88,10 +87,41 @@ App.service('MyCourseService', function() {
       myCoursesID.push(c.id);
     });
 
+    console.log(courseID);
+    console.log(myCoursesID);
     var index = myCoursesID.indexOf(courseID);
     myserv.myCourses.splice(index, 1);
-    console.log(myserv.myCourses.length);
+    console.log(index);
   };
+
+  myserv.postCourses = function() {
+    var body = { '561054048' : myserv.myCourses };
+    $http.post('http://52.37.98.127:3000/v1/5610545048?pin=5048', angular.toJson(body), {
+      headers : {
+          'Content-Type': 'application/json'
+      }
+    }).success(function(data, status, headers, config) {
+      // alert('success2')
+    }).
+    error(function(data, status, headers, config) {
+      alert(data.body);
+    });
+  }
+
+  myserv.getHistory = function() {
+    // /:studentId/:property?pin=:pin
+    // var body = { '561054048' : myserv.myCourses };
+    // $http.post('http://52.37.98.127:3000/v1/5610545048?pin=5048', angular.toJson(body), {
+    //   headers : {
+    //       'Content-Type': 'application/json'
+    //   }
+    // }).success(function(data, status, headers, config) {
+    //   // alert('success2')
+    // }).
+    // error(function(data, status, headers, config) {
+    //   alert(data.body);
+    // });
+  }
 });
 
 App.controller('HomeController', function ($http, MyCourseService) {
@@ -100,9 +130,9 @@ App.controller('HomeController', function ($http, MyCourseService) {
   var myNewCourses = MyCourseService.myNewCourses;
   // $http.get('https://whsatku.github.io/skecourses/combined.json')
   $http.get('https://whsatku.github.io/skecourses/list.json')
-  .success(function(res) {
-    home.courses = res;
-  });
+    .success(function(res) {
+      home.courses = res;
+    });
 
   home.isEnrolled = function(courseID) {
     var myCoursesID = [];
@@ -147,14 +177,13 @@ App.controller('EnrollController', function ($http, $stateParams, MyCourseServic
 App.controller('ConfirmController', function ($http, MyCourseService) {
   var conf = this;
   conf.mycourses = MyCourseService.myNewCourses;
-  console.log(conf.mycourses);
 
   conf.removeAllCourse = function() {
     MyCourseService.removeAllCourse();
   }
 
-  conf.removeCourse = function() {
-    MyCourseService.removeCourse();
+  conf.removeCourse = function(id) {
+    MyCourseService.removeCourse(id);
   }
 
   conf.confirmEnroll = function() {
@@ -170,7 +199,7 @@ App.controller('DashboardController', function ($http, MyCourseService) {
     MyCourseService.dropAllCourse();
   }
 
-  dashb.dropCourse = function() {
-    MyCourseService.dropCourse();
+  dashb.dropCourse = function(id) {
+    MyCourseService.dropCourse(id);
   }
 })
