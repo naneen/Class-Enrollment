@@ -22,11 +22,11 @@ App.config(function($stateProvider, $urlRouterProvider) {
     controller: "ListController",
     controllerAs: 'listCtrl'
   })
-  .state('confirm', {
-    url: "/confirm",
+  .state('report', {
+    url: "/report",
     templateUrl: "confirm.html",
-    controller: "ConfirmController",
-    controllerAs: 'confCtrl'
+    controller: "ReportController",
+    controllerAs: 'repCtrl'
   })
   .state('dashboardNav', {
     url: "/myCourses",
@@ -51,34 +51,20 @@ App.service('MyCourseService', function($http) {
     myserv.myNewCourses.push(
       course
     );
-    // console.log(myserv.myNewCourses);
-  };
-
-  myserv.removeAllCourse = function() {
-    myserv.myNewCourses.length = 0;
-  }
-
-  myserv.removeCourse = function(courseID) {
-    var myCoursesID = [];
-    angular.forEach(myserv.myNewCourses, function(c, key) {
-      myCoursesID.push(c.id);
-    });
-
-    var index = myCoursesID.indexOf(courseID);
-    myserv.myNewCourses.splice(index, 1);
-    console.log(index);
-  };
-
-  myserv.confirmEnroll = function() {
-    angular.forEach(myserv.myNewCourses, function(c, key) {
-      myserv.myCourses.push(c);
-    });
-    myserv.removeAllCourse();
+    myserv.myCourses.push(
+      course
+    );
     myserv.postCourses();
+  };
+
+  myserv.clearNewEntry = function() {
+    myserv.myNewCourses.length = 0;
+    console.log(myserv.myNewCourses);
   }
 
   myserv.dropAllCourse = function() {
     myserv.myCourses.length = 0;
+    myserv.postCourses();
   }
 
   myserv.dropCourse = function(courseID) {
@@ -87,11 +73,9 @@ App.service('MyCourseService', function($http) {
       myCoursesID.push(c.id);
     });
 
-    console.log(courseID);
-    console.log(myCoursesID);
     var index = myCoursesID.indexOf(courseID);
     myserv.myCourses.splice(index, 1);
-    console.log(index);
+    myserv.postCourses();
   };
 
   myserv.postCourses = function() {
@@ -107,28 +91,19 @@ App.service('MyCourseService', function($http) {
       alert(data.body);
     });
   }
-
-  myserv.getHistory = function() {
-    // /:studentId/:property?pin=:pin
-    // var body = { '561054048' : myserv.myCourses };
-    // $http.post('http://52.37.98.127:3000/v1/5610545048?pin=5048', angular.toJson(body), {
-    //   headers : {
-    //       'Content-Type': 'application/json'
-    //   }
-    // }).success(function(data, status, headers, config) {
-    //   // alert('success2')
-    // }).
-    // error(function(data, status, headers, config) {
-    //   alert(data.body);
-    // });
-  }
 });
 
 App.controller('HomeController', function ($http, MyCourseService) {
   var home = this;
   var myCourses = MyCourseService.myCourses;
   var myNewCourses = MyCourseService.myNewCourses;
-  // $http.get('https://whsatku.github.io/skecourses/combined.json')
+
+  $http.get('http://52.37.98.127:3000/v1/5610545048?pin=5048')
+    .success(function(res) {
+      home.nrolledCourses = res;
+      // console.log(home.nrolledCourses);
+    });
+
   $http.get('https://whsatku.github.io/skecourses/list.json')
     .success(function(res) {
       home.courses = res;
@@ -174,20 +149,21 @@ App.controller('EnrollController', function ($http, $stateParams, MyCourseServic
   }
 })
 
-App.controller('ConfirmController', function ($http, MyCourseService) {
-  var conf = this;
-  conf.mycourses = MyCourseService.myNewCourses;
+App.controller('ReportController', function ($http, MyCourseService) {
+  var report = this;
+  report.mycourses = MyCourseService.myCourses;
+  report.myNewcourses = MyCourseService.myNewCourses;
 
-  conf.removeAllCourse = function() {
-    MyCourseService.removeAllCourse();
+  report.dropAllCourse = function() {
+    MyCourseService.dropAllCourse();
   }
 
-  conf.removeCourse = function(id) {
-    MyCourseService.removeCourse(id);
+  report.dropCourse = function(id) {
+    MyCourseService.dropCourse(id);
   }
 
-  conf.confirmEnroll = function() {
-    MyCourseService.confirmEnroll();
+  report.clearNewEntry = function() {
+    MyCourseService.clearNewEntry();
   }
 })
 

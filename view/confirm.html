@@ -9,12 +9,12 @@
 
 <div id="enrollStep">
   <div id="content" class="ui container">
-    <h2 class="ui header">
+    <h1 class="ui header">
       <i class="add user icon"></i>
       <div class="content">
-        Comfirm New Enfollment
+        Enrollment Report
       </div>
-    </h2>
+    </h1>
     <br>
 
     <div class="ui two column centered grid" id="stepGrid">
@@ -33,8 +33,8 @@
         </div>
         <div class="active step">
           <div class="content">
-            <div class="title">Confirm</div>
-            <div class="description">Verify enrollment details</div>
+            <div class="title">Report</div>
+            <div class="description">Enrollment report</div>
           </div>
         </div>
       </div>
@@ -43,12 +43,10 @@
 </div>
 
 <div id="content" class="ui container">
-  <button class="fluid ui teal button" ui-sref="home">Continue enroll</button>
-  <br>
-  <button class="fluid ui button" ng-click="confCtrl.removeAllCourse()">Remove all courses</button>
+  <h3>New entry</h3>
   <br><br>
   <div class="ui four stackable cards">
-    <div class="card" ng-repeat="course in confCtrl.mycourses">
+    <div class="card" ng-repeat="course in repCtrl.myNewcourses">
       <div class="content">
         <div class="header">{{course.id}}</div>
         <div class="meta">credit</div>
@@ -56,11 +54,28 @@
           {{course.name.en}}
         </div>
       </div>
-      <div class="ui bottom attached button" ng-click="confCtrl.removeCourse(course.id)">
-        <i class="trash outline icon"></i>
-        Remove
-      </div>
     </div>
   </div><br><br>
-  <button class="fluid ui button" ui-sref="dashboardNav" ng-click="confCtrl.confirmEnroll()">Confirm the enrollment</button>
+  <button class="ui teal button" ui-sref="home">Continue enroll</button>
+  <button class="ui button" ui-sref="home" ng-click="repCtrl.clearNewEntry()">Home</button>
+</div>
+
+<div id="content" class="ui container">
+  <h3>Course enrollment report</h3>
+  <br><br>
+  <div class="ui four stackable cards">
+    <div class="card" ng-repeat="course in repCtrl.mycourses">
+      <div class="content">
+        <div class="header">{{course.id}}</div>
+        <div class="meta">credit</div>
+        <div class="description">
+          {{course.name.en}}
+        </div>
+      </div>
+      <div class="ui bottom attached button" ng-click="repCtrl.dropCourse(course.id)">
+        <i class="trash outline icon"></i>
+        Drop
+      </div>
+    </div>
+  </div>
 </div>
