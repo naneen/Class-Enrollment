@@ -12,7 +12,7 @@
     <h2 class="ui header">
       <i class="add user icon"></i>
       <div class="content">
-        All Courses
+        Comfirm New Enfollment
       </div>
     </h2>
     <br>
@@ -45,10 +45,10 @@
 <div id="content" class="ui container">
   <button class="fluid ui teal button" ui-sref="home">Continue enroll</button>
   <br>
-  <button class="fluid ui button" ng-click="dashCtrl.dropAllCourse()">Drop all courses</button>
+  <button class="fluid ui button" ng-click="confCtrl.removeAllCourse()">Remove all courses</button>
   <br><br>
   <div class="ui four stackable cards">
-    <div class="card" ng-repeat="course in dashCtrl.mycourses">
+    <div class="card" ng-repeat="course in confCtrl.mycourses">
       <div class="content">
         <div class="header">{{course.id}}</div>
         <div class="meta">credit</div>
@@ -56,10 +56,11 @@
           {{course.name.en}}
         </div>
       </div>
-      <div class="ui bottom attached button" ng-click="dashCtrl.dropCourse()">
+      <div class="ui bottom attached button" ng-click="confCtrl.removeCourse()">
         <i class="trash outline icon"></i>
-        Drop
+        Remove
       </div>
     </div>
-  </div>
+  </div><br><br>
+  <button class="fluid ui button" ui-sref="dashboardNav" ng-click="confCtrl.confirmEnroll()">Confirm the enrollment</button>
 </div>

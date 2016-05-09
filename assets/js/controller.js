@@ -22,11 +22,11 @@ App.config(function($stateProvider, $urlRouterProvider) {
     controller: "ListController",
     controllerAs: 'listCtrl'
   })
-  .state('dashboard', {
-    url: "/dashboard",
-    templateUrl: "dashboard.html",
-    controller: "DashboardController",
-    controllerAs: 'dashCtrl'
+  .state('confirm', {
+    url: "/confirm",
+    templateUrl: "confirm.html",
+    controller: "ConfirmController",
+    controllerAs: 'confCtrl'
   })
   .state('dashboardNav', {
     url: "/myCourses",
@@ -44,21 +44,45 @@ App.config(function($stateProvider, $urlRouterProvider) {
 
 App.service('MyCourseService', function() {
   var myserv = this;
+  myserv.myNewCourses = [];
   myserv.myCourses = [];
 
   myserv.addCourse = function(course) {
-    myserv.myCourses.push(
+    myserv.myNewCourses.push(
       course
     );
+    console.log(myserv.myNewCourses);
   };
+
+  myserv.removeAllCourse = function() {
+    myserv.myNewCourses.length = 0;
+  }
+
+  myserv.removeCourse = function(courseID) {
+    console.log("drop");
+    console.log(courseID);
+    var myCoursesID = [];
+    angular.forEach(myserv.myNewCourses, function(c, key) {
+      myCoursesID.push(c.id);
+    });
+
+    var index = myCoursesID.indexOf(courseID);
+    myserv.myNewCourses.splice(index, 1);
+    console.log(myserv.myNewCourses.length);
+  };
+
+  myserv.confirmEnroll = function() {
+    angular.forEach(myserv.myNewCourses, function(c, key) {
+      myserv.myCourses.push(c);
+    });
+    myserv.removeAllCourse();
+  }
 
   myserv.dropAllCourse = function() {
     myserv.myCourses.length = 0;
   }
 
   myserv.dropCourse = function(courseID) {
-    console.log("drop");
-    console.log(courseID);
     var myCoursesID = [];
     angular.forEach(myserv.myCourses, function(c, key) {
       myCoursesID.push(c.id);
@@ -73,6 +97,7 @@ App.service('MyCourseService', function() {
 App.controller('HomeController', function ($http, MyCourseService) {
   var home = this;
   var myCourses = MyCourseService.myCourses;
+  var myNewCourses = MyCourseService.myNewCourses;
   // $http.get('https://whsatku.github.io/skecourses/combined.json')
   $http.get('https://whsatku.github.io/skecourses/list.json')
   .success(function(res) {
@@ -82,6 +107,9 @@ App.controller('HomeController', function ($http, MyCourseService) {
   home.isEnrolled = function(courseID) {
     var myCoursesID = [];
     angular.forEach(myCourses, function(c, key) {
+      myCoursesID.push(c.id);
+    });
+    angular.forEach(myNewCourses, function(c, key) {
       myCoursesID.push(c.id);
     });
 
@@ -111,7 +139,26 @@ App.controller('EnrollController', function ($http, $stateParams, MyCourseServic
   });
 
   enroll.addCourse = function() {
+    // console.log(enroll.course);
     MyCourseService.addCourse(enroll.course);
+  }
+})
+
+App.controller('ConfirmController', function ($http, MyCourseService) {
+  var conf = this;
+  conf.mycourses = MyCourseService.myNewCourses;
+  console.log(conf.mycourses);
+
+  conf.removeAllCourse = function() {
+    MyCourseService.removeAllCourse();
+  }
+
+  conf.removeCourse = function() {
+    MyCourseService.removeCourse();
+  }
+
+  conf.confirmEnroll = function() {
+    MyCourseService.confirmEnroll();
   }
 })
 
