@@ -50,3 +50,11 @@ ul {
 /*.equal.height.row {
     display: table-row;
 }*/
+
+.ui.olive.button:hover, .ui.olive.buttons .button:hover {
+  background-color: #00B5AD;
+}
+
+.ui.button:disabled {
+  background-color: red;
+}
