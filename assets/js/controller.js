@@ -114,6 +114,7 @@ App.controller('HomeController', function ($http, MyCourseService) {
   var home = this;
   // home.myCourses = MyCourseService.myCourses;
   var myNewCourses = MyCourseService.myNewCourses;
+  home.studentID = MyCourseService.studentID;
 
   $http.get('https://whsatku.github.io/skecourses/list.json')
     .success(function(res) {
@@ -141,8 +142,9 @@ App.controller('HomeController', function ($http, MyCourseService) {
   }
 })
 
-App.controller('ListController', function ($http) {
+App.controller('ListController', function ($http, MyCourseService) {
   var list = this;
+  list.studentID = MyCourseService.studentID;
 
   $http.get('https://whsatku.github.io/skecourses/combined.json')
   .success(function(res) {
@@ -153,6 +155,7 @@ App.controller('ListController', function ($http) {
 App.controller('EnrollController', function ($http, $stateParams, MyCourseService) {
   var enroll = this;
   var courseID = $stateParams.courseID;
+  enroll.studentID = MyCourseService.studentID;
 
   $http.get('https://whsatku.github.io/skecourses/' + courseID + '.json')
   .success(function(res) {
@@ -186,6 +189,7 @@ App.controller('ReportController', function ($http, MyCourseService) {
 App.controller('DashboardController', function ($http, MyCourseService) {
   var dashb = this;
   dashb.mycourses = MyCourseService.myCourses;
+  dashb.studentID = MyCourseService.studentID;
 
   dashb.dropAllCourse = function() {
     MyCourseService.dropAllCourse();
@@ -204,7 +208,5 @@ App.controller('LoginController', function ($http, MyCourseService) {
   login.setAccount = function() {
     MyCourseService.studentID = login.studentID;
     MyCourseService.password = login.password;
-    console.log(login.studentID);
-    console.log(login.password);
   }
 })
