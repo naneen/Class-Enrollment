@@ -1,12 +1,16 @@
 <div id="navbar" class="ui secondary pointing menu fixed">
   <div class="ui container">
-    <a ui-sref="home" class="item">SKE REGIST</a>
+    <a ui-sref="home" class="item"><i class="add user icon"></i>SKE REGIST</a>
     <!-- <a href="#" class="item">Enroll</a> -->
     <a ui-sref="list" class="item">Courses</a>
     <a ui-sref="dashboardNav" class="item active">My Courses</a>
   </div>
   <div class="right menu">
+    <div class="ui avatar image" style="padding: 0;">
+      <img src="../assets/images/joe.jpg">
+    </div>
     <div class="item">student : {{dashCtrl.studentID}}</div>
+    <a ui-sref="login" class="item">Log Out</a>
   </div>
 </div>
 
@@ -37,13 +41,12 @@
   <br><br>
   <button id="dropButton" class="fluid ui red button" ng-click="dashCtrl.dropAllCourse()">Drop all courses</button>
   <br>
-  <button id="json" class="fluid ui teal button" ng-click="dashCtrl.showJSON()">Show JSON</button>
+  <button id="json" class="fluid ui olive button" ng-click="dashCtrl.showHide()">{{dashCtrl.buttonText}}</button>
 
-  <div class="ui page dimmer">
-    <div class="content">
-      <div class="center"><pre class="prettyprint">{{dashCtrl.json}}</pre></div>
-    </div>
-  </div>
+  <div class="ui olive inverted segment" ng-show="dashCtrl.isVisible"><pre>{{dashCtrl.json}}</pre></div>
+
+
+
 </div>
 
 <script type="text/javascript">

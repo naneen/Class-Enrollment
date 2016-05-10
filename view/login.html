@@ -1,27 +1,35 @@
 <div id="loginBody">
   <div id="navbar" class="ui secondary pointing menu fixed">
     <div class="ui container">
-      <a ui-sref="home" class="item active">SKE REGIST</a>
-      <!-- <a ui-sref="home" class="item">Enroll</a> -->
-      <a ui-sref="list" class="item">Courses</a>
-      <a ui-sref="dashboardNav" class="item">My Courses</a>
+      <a class="item active"><i class="add user icon"></i>SKE REGIST</a>
     </div>
   </div>
 
   <div id="content" class="ui container">
     <div id="formdiv">
-      <h1 id="title">Login</h2>
-      <form class="ui form">
+      <h1 id="title" style="font-size: 50px">Login</h2><br>
+      <form class="ui form" name="form">
         <div class="field">
-          <label>First Name</label>
-          <input type="text" name="first-name" placeholder="First Name" ng-model="loginCtrl.studentID">
+          <label>Student ID</label>
+          <span ng-show="!form.stdid.$valid" style="color: red;">*Student ID is required</span>
+          <input type="text" name="stdid" placeholder="Enter Student ID" ng-model="loginCtrl.studentID" required/>
         </div>
         <div class="field">
-          <label>Last Name</label>
-          <input type="text" name="last-name" placeholder="Last Name" ng-model="loginCtrl.password">
+          <label>Password</label>
+          <span ng-show="!form.password.$valid" style="color: red;">*Student ID is required</span>
+          <input type="text" name="password" placeholder="Enter Password" ng-model="loginCtrl.password" required/>
         </div>
-        <button id="submitB" class="ui button" type="submit" ui-sref="home" ng-click="loginCtrl.setAccount()">Submit</button>
+        <div class="submit">
+          <button id="submitB" class="fluid ui grey button" type="submit" ui-sref="home" ng-disabled="form.$invalid" ng-click="loginCtrl.setAccount()">Submit</button>
+        </div>
       </form>
+
+
+      <!-- <form name="myForm">
+        <input name="myText" type="text" ng-model="mytext" required />
+        <button ng-disabled="myForm.$invalid">Save</button>
+      </form> -->
+
     </div>
   </div>
 </div>

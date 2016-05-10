@@ -5,3 +5,7 @@
 #listHeader {
   color: #7A390D
 }
+
+.ui.avatar.image {
+  margin-top: 6px;
+}

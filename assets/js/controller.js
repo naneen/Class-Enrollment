@@ -105,9 +105,7 @@ App.service('MyCourseService', function($http) {
     });
   }
 
-  myserv.showJSON = function() {
-
-  }
+  
 });
 
 App.controller('HomeController', function ($http, MyCourseService) {
@@ -162,9 +160,10 @@ App.controller('EnrollController', function ($http, $stateParams, MyCourseServic
   });
 
   enroll.addCourse = function() {
-    // console.log(enroll.course);
     MyCourseService.addCourse(enroll.course);
   }
+
+
 })
 
 App.controller('ReportController', function ($http, MyCourseService) {
@@ -190,7 +189,9 @@ App.controller('DashboardController', function ($http, MyCourseService) {
   var dashb = this;
   dashb.mycourses = MyCourseService.myCourses;
   dashb.studentID = MyCourseService.studentID;
-  dashb.json = MyCourseService.myCourses;
+  dashb.json = JSON.stringify(MyCourseService.myCourses, null, ' ');
+  dashb.isVisible = false;
+  dashb.buttonText = "Show JSON";
 
   dashb.dropAllCourse = function() {
     MyCourseService.dropAllCourse();
@@ -198,6 +199,16 @@ App.controller('DashboardController', function ($http, MyCourseService) {
 
   dashb.dropCourse = function(id) {
     MyCourseService.dropCourse(id);
+  }
+
+
+  dashb.showHide = function () {
+    dashb.isVisible = dashb.isVisible ? false : true;
+    if(!dashb.isVisible){
+      dashb.buttonText = "Show JSON";
+    }else {
+      dashb.buttonText = "Hide JSON";
+    }
   }
 })
 

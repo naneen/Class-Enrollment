@@ -1,11 +1,16 @@
+<div id="enrollbody">
 <div id="navbar" class="ui secondary pointing menu fixed">
   <div class="ui container">
-    <a ui-sref="home" class="active item">SKE REGIST</a>
+    <a ui-sref="home" class="active item"><i class="add user icon"></i>SKE REGIST</a>
     <a ui-sref="list" class="item">Courses</a>
     <a ui-sref="dashboardNav" class="item">My Courses</a>
   </div>
   <div class="right menu">
+    <div class="ui avatar image" style="padding: 0;">
+      <img src="../assets/images/joe.jpg">
+    </div>
     <div class="item">student : {{nrollCtrl.studentID}}</div>
+    <a ui-sref="login" class="item">Log Out</a>
   </div>
 </div>
 
@@ -15,7 +20,7 @@
     <h2 class="ui header">
       <i class="add user icon"></i>
       <div class="content">
-        All Courses
+        Course Description
       </div>
     </h2>
     <br>
@@ -45,9 +50,34 @@
   </div>
 
   <div id="content" class="ui container">
-    {{nrollCtrl.course.id}}<br>
-    {{nrollCtrl.course.name.en}}<br>
-    {{nrollCtrl.course.description.en}}<br>
+    <h1 id="coursename" class="ui header">{{nrollCtrl.course.id}} - {{nrollCtrl.course.name.en}}</h1>
+    <table class="ui olive table">
+      <thead>
+        <tr><th>Title</th>
+          <th>Description</th>
+        </tr></thead><tbody>
+          <tr>
+            <td>Course ID</td>
+            <td>{{nrollCtrl.course.id}}</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td>{{nrollCtrl.course.description.en}}</td>
+          </tr>
+          <tr>
+            <td>Credit</td>
+            <td>{{nrollCtrl.course.credit.total}} ({{nrollCtrl.course.credit.lecture}} - {{nrollCtrl.course.credit.lab}} - {{nrollCtrl.course.credit.self}})</td>
+          </tr>
+          <tr>
+            <td>Prerequisite</td>
+            <td><div ng-repeat="pre in nrollCtrl.course.prereq">{{pre.id}}</div></td>
+          </tr>
+          <tr>
+            <td>Sections</td>
+            <td><div ng-repeat="sec in nrollCtrl.course.sections">{{sec.location}}</td>
+          </tr>
+        </tbody>
+      </table>
     <br>
     <div class="ui centered grid">
       <div class="column"></div>
@@ -62,3 +92,5 @@
       </div>
     </div>
   </div>
+</div>
+</div>

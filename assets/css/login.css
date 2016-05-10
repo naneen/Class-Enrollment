@@ -2,15 +2,16 @@
   width: 50%;
   background-color: green;
   padding: 7%;
-  margin: 130px auto;
-  background-color: #DDD92A;
-  border-radius: 30em;
+  margin: 100px auto;
+  background-color: #EAE151;
+  border-radius: 1em;
 }
 
 #title {
   text-align: center;
 }
 
-#submitB {
+.submit > #submitB {
+  background-color: black;
   margin: 0 auto;
 }

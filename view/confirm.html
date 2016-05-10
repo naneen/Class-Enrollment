@@ -1,12 +1,16 @@
 <div id="navbar" class="ui secondary pointing menu fixed">
   <div class="ui container">
-    <a ui-sref="home" class="item">SKE REGIST</a>
+    <a ui-sref="home" class="item"><i class="add user icon"></i>SKE REGIST</a>
     <!-- <a href="#" class="item">Enroll</a> -->
     <a ui-sref="list" class="item">Courses</a>
     <a ui-sref="dashboardNav" class="item active">My Courses</a>
   </div>
   <div class="right menu">
+    <div class="ui avatar image" style="padding: 0;">
+      <img src="../assets/images/joe.jpg">
+    </div>
     <div class="item">student : {{repCtrl.studentID}}</div>
+    <a ui-sref="login" class="item">Log Out</a>
   </div>
 </div>
 
