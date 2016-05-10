@@ -17,7 +17,7 @@
         <div class="field">
           <label>Password</label>
           <span ng-show="!form.password.$valid" style="color: red;">*Student ID is required</span>
-          <input type="text" name="password" placeholder="Enter Password" ng-model="loginCtrl.password" required/>
+          <input type="password" name="password" placeholder="Enter Password" ng-model="loginCtrl.password" required/>
         </div>
         <div class="submit">
           <button id="submitB" class="fluid ui grey button" type="submit" ui-sref="home" ng-disabled="form.$invalid" ng-click="loginCtrl.setAccount()">Submit</button>
