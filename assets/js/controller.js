@@ -48,7 +48,7 @@ App.service('MyCourseService', function($http) {
   myserv.myCourses = [];
   myserv.studentID = "";
   myserv.password = "";
-
+// temp = { '5610546745' : this.course } ;
   $http.get('http://52.37.98.127:3000/v1/5610545048?pin=5048')
     .success(function(res) {
       myserv.myCourses = res['561054048'];
@@ -87,7 +87,10 @@ App.service('MyCourseService', function($http) {
   };
 
   myserv.postCourses = function() {
-    var body = { '561054048' : myserv.myCourses };
+    var id = myserv.studentID;
+    console.log(id);
+    var body = { [id] : myserv.myCourses };
+    console.log(body);
     $http.post('http://52.37.98.127:3000/v1/5610545048?pin=5048', angular.toJson(body), {
       headers : {
           'Content-Type': 'application/json'
@@ -172,6 +175,7 @@ App.controller('ReportController', function ($http, MyCourseService) {
   var report = this;
   report.mycourses = MyCourseService.myCourses;
   report.myNewcourses = MyCourseService.myNewCourses;
+  report.studentID = MyCourseService.studentID;
 
   report.dropAllCourse = function() {
     MyCourseService.dropAllCourse();
