@@ -104,6 +104,10 @@ App.service('MyCourseService', function($http) {
       alert(data.body);
     });
   }
+
+  myserv.showJSON = function() {
+
+  }
 });
 
 App.controller('HomeController', function ($http, MyCourseService) {
@@ -186,6 +190,7 @@ App.controller('DashboardController', function ($http, MyCourseService) {
   var dashb = this;
   dashb.mycourses = MyCourseService.myCourses;
   dashb.studentID = MyCourseService.studentID;
+  dashb.json = MyCourseService.myCourses;
 
   dashb.dropAllCourse = function() {
     MyCourseService.dropAllCourse();
