@@ -146,8 +146,7 @@ App.controller('HomeController', function ($http, MyCourseService) {
 App.controller('ListController', function ($http, MyCourseService) {
   var list = this;
   list.studentID = MyCourseService.studentID;
-
-  $http.get('https://whsatku.github.io/skecourses/combined.json')
+  $http.get('https://raw.githubusercontent.com/chinclubi/HCI-webapplication/master/assets/courses.json')
   .success(function(res) {
     list.detail = res;
   });
