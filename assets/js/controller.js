@@ -6,37 +6,37 @@ App.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('home', {
     url: "/home",
-    templateUrl: "home.html",
+    templateUrl: "view/home.html",
     controller: "HomeController",
     controllerAs: 'homeCtrl'
   })
   .state('enroll', {
     url: '/enroll/:courseID',
-    templateUrl: "enroll.html",
+    templateUrl: "view/enroll.html",
     controller: "EnrollController",
     controllerAs: 'nrollCtrl'
   })
   .state('list', {
     url: "/list",
-    templateUrl: "list.html",
+    templateUrl: "view/list.html",
     controller: "ListController",
     controllerAs: 'listCtrl'
   })
   .state('report', {
     url: "/report",
-    templateUrl: "confirm.html",
+    templateUrl: "view/confirm.html",
     controller: "ReportController",
     controllerAs: 'repCtrl'
   })
   .state('dashboardNav', {
     url: "/myCourses",
-    templateUrl: "dashboardNav.html",
+    templateUrl: "view/dashboardNav.html",
     controller: "DashboardController",
     controllerAs: 'dashCtrl'
   })
   .state('login', {
     url: "/login",
-    templateUrl: "login.html",
+    templateUrl: "view/login.html",
     controller: "LoginController",
     controllerAs: 'loginCtrl'
   })
@@ -105,7 +105,7 @@ App.service('MyCourseService', function($http) {
     });
   }
 
-  
+
 });
 
 App.controller('HomeController', function ($http, MyCourseService) {
