@@ -53,7 +53,7 @@
         </div>
         <div class="ui olive clearing segment" ng-repeat="course in homeCtrl.courses | filter:search">
           <div >
-            <p>{{course.id}} : {{course.name.en}}</p>
+            <p>{{course.id}} : {{course.name}}</p>
             <a ui-sref="enroll({courseID: course.id})">
               <button class="ui olive right floated button" type="submit" ng-disabled="homeCtrl.isEnrolled(course.id)">Enroll</button>
             </a>

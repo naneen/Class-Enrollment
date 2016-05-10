@@ -50,16 +50,11 @@ App.service('MyCourseService', function($http) {
   myserv.password = "";
 // temp = { '5610546745' : this.course } ;
 
-  myserv.getCourses = function() {
+  myserv.getMyCourses = function() {
     $http.get('http://52.37.98.127:3000/v1/5610545048?pin=5048')
       .success(function(res) {
         if(res[myserv.studentID]){
           myserv.myCourses = res[myserv.studentID];
-          console.log("not undefine");
-          console.log(myserv.myCourses);
-        }
-        else{
-          console.log(myserv.myCourses);
         }
       });
   }
@@ -117,7 +112,7 @@ App.controller('HomeController', function ($http, MyCourseService) {
   var myNewCourses = MyCourseService.myNewCourses;
   home.studentID = MyCourseService.studentID;
 
-  $http.get('https://whsatku.github.io/skecourses/list.json')
+  $http.get('https://raw.githubusercontent.com/chinclubi/HCI-webapplication/master/assets/courses.json')
     .success(function(res) {
       home.courses = res;
     });
@@ -210,7 +205,7 @@ App.controller('LoginController', function ($http, MyCourseService) {
     MyCourseService.studentID = login.studentID;
     MyCourseService.password = login.password;
     // MyCourseService
-    MyCourseService.getCourses();
+    MyCourseService.getMyCourses();
     // login.postCourses();
   }
 
