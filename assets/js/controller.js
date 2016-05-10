@@ -49,11 +49,22 @@ App.service('MyCourseService', function($http) {
   myserv.studentID = "";
   myserv.password = "";
 // temp = { '5610546745' : this.course } ;
-  $http.get('http://52.37.98.127:3000/v1/5610545048?pin=5048')
-    .success(function(res) {
-      myserv.myCourses = res['561054048'];
-      // console.log(home.nrolledCourses);
-    });
+
+  myserv.getCourses = function() {
+    $http.get('http://52.37.98.127:3000/v1/5610545048?pin=5048')
+      .success(function(res) {
+        console.log(myserv.studentID);
+        console.log(res);
+        if(!myserv.isUndefinedOrNull(res)){
+          myserv.myCourses = res[myserv.studentID];
+        }
+        // console.log(home.nrolledCourses);
+      });
+  }
+
+  myserv.isUndefinedOrNull = function(val) {
+    return angular.isUndefined(val) || val === null
+  }
 
   myserv.addCourse = function(course) {
     myserv.myNewCourses.push(
@@ -88,9 +99,7 @@ App.service('MyCourseService', function($http) {
 
   myserv.postCourses = function() {
     var id = myserv.studentID;
-    console.log(id);
     var body = { [id] : myserv.myCourses };
-    console.log(body);
     $http.post('http://52.37.98.127:3000/v1/5610545048?pin=5048', angular.toJson(body), {
       headers : {
           'Content-Type': 'application/json'
@@ -212,5 +221,6 @@ App.controller('LoginController', function ($http, MyCourseService) {
   login.setAccount = function() {
     MyCourseService.studentID = login.studentID;
     MyCourseService.password = login.password;
+    MyCourseService.getCourses();
   }
 })
