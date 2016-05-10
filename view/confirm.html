@@ -46,8 +46,8 @@
 </div>
 
 <div id="content" class="ui container">
-  <h3>New entry</h3>
-  <br><br>
+  <h2 class="subheader">New entry</h2>
+  <br>
   <div class="ui four stackable cards">
     <div class="card" ng-repeat="course in repCtrl.myNewcourses">
       <div class="content">
@@ -59,13 +59,14 @@
       </div>
     </div>
   </div><br><br>
-  <button class="ui teal button" ui-sref="home">Continue enroll</button>
-  <button class="ui button" ui-sref="home" ng-click="repCtrl.clearNewEntry()">Home</button>
+  <button class="ui teal button" ui-sref="home" ng-click="repCtrl.clearNewEntry()"><i class="home icon"></i>Home</button>
+
+  <div class="ui divider"></div>
 </div>
 
 <div id="content" class="ui container">
-  <h3>Course enrollment report</h3>
-  <br><br>
+  <h2 class="subheader">Course enrollment report</h2>
+  <br>
   <div class="ui four stackable cards">
     <div class="card" ng-repeat="course in repCtrl.mycourses">
       <div class="content">

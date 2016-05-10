@@ -213,23 +213,4 @@ App.controller('LoginController', function ($http, MyCourseService) {
     MyCourseService.getMyCourses();
     // login.postCourses();
   }
-
-  // login.postCourses = function() {
-  //   var user = { 'user' : login.studentID };
-  //   var body = { lastuser : user };
-  //   console.log(user);
-  //   console.log(body);
-  //   console.log(angular.toJson(body));
-  // //   $http.post('http://52.37.98.127:3000/v1/5610545048?pin=5048', angular.toJson(body), {
-  // //     headers : {
-  // //         'Content-Type': 'application/json'
-  // //     }
-  // //   }).success(function(data, status, headers, config) {
-  // //     // alert('success2')
-  // //   }).
-  // //   error(function(data, status, headers, config) {
-  // //     alert(data.body);
-  // //   });
-  // }
-
 })
