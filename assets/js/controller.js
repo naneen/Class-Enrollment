@@ -53,17 +53,15 @@ App.service('MyCourseService', function($http) {
   myserv.getCourses = function() {
     $http.get('http://52.37.98.127:3000/v1/5610545048?pin=5048')
       .success(function(res) {
-        console.log(myserv.studentID);
-        console.log(res);
-        if(!myserv.isUndefinedOrNull(res)){
+        if(res[myserv.studentID]){
           myserv.myCourses = res[myserv.studentID];
+          console.log("not undefine");
+          console.log(myserv.myCourses);
         }
-        // console.log(home.nrolledCourses);
+        else{
+          console.log(myserv.myCourses);
+        }
       });
-  }
-
-  myserv.isUndefinedOrNull = function(val) {
-    return angular.isUndefined(val) || val === null
   }
 
   myserv.addCourse = function(course) {
@@ -111,15 +109,6 @@ App.service('MyCourseService', function($http) {
       alert(data.body);
     });
   }
-
-  // course = [];
-	// temp = { '5610546745' : this.course } ;
-  //
-  //
-	// ht.post(url, angular.toJson(temp), )
-  //
-  //
-	// course = data['5610546745'];
 });
 
 App.controller('HomeController', function ($http, MyCourseService) {
@@ -221,6 +210,27 @@ App.controller('LoginController', function ($http, MyCourseService) {
   login.setAccount = function() {
     MyCourseService.studentID = login.studentID;
     MyCourseService.password = login.password;
+    // MyCourseService
     MyCourseService.getCourses();
+    // login.postCourses();
   }
+
+  // login.postCourses = function() {
+  //   var user = { 'user' : login.studentID };
+  //   var body = { lastuser : user };
+  //   console.log(user);
+  //   console.log(body);
+  //   console.log(angular.toJson(body));
+  // //   $http.post('http://52.37.98.127:3000/v1/5610545048?pin=5048', angular.toJson(body), {
+  // //     headers : {
+  // //         'Content-Type': 'application/json'
+  // //     }
+  // //   }).success(function(data, status, headers, config) {
+  // //     // alert('success2')
+  // //   }).
+  // //   error(function(data, status, headers, config) {
+  // //     alert(data.body);
+  // //   });
+  // }
+
 })
